@@ -1,0 +1,42 @@
+    <div style='height:550px;'>
+<section>
+<h1> Welcome to Gym-Finder!</h1>
+    Our website is single page application, a search engine to find gyms in your area, compare prices, see lessons in each gym and more.
+    Some of the languages/technology that we used in the site are:
+    <br>
+
+<div class="transitionsDiv">
+    <div class="technology">CSS3</div>
+    <div class="technology">HTML5</div>
+    <div class="technology">Node.js</div>
+    <div class="technology">AngularJS</div>
+    <div class="technology">Socket.io</div>
+    <div class="technology">MongoDB</div>
+</div>
+
+
+    <video style="width: 70%;" controls autoplay>
+        <source src="./videos/gshape.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</section>
+
+<aside>
+    <img id="logo" src="./images/gymLogo.jpg" width="250" height="324" style="display:none;">
+    <canvas id="myCanvas" style="border:1px solid #d3d3d3; margin-top: 50px;" width="280" height="324">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    <br>
+    <p style="float:right; margin-right: 160px;"><button onclick="myCanvas()">לצפיה בלוגו שלנו - Canvas</button></p>
+</aside>
+
+
+<script>
+    function myCanvas() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("logo");
+        ctx.drawImage(img, 15, 15);
+    }
+</script>
+        </div>
