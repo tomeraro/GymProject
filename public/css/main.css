@@ -439,7 +439,7 @@ background-color: rgba(140, 193, 82, 0.8);
 	-webkit-box-shadow:inset 0px 0px 0px 3px #ddd;
     -moz-box-shadow:inset 0px 0px 0px 3px #ddd;
     box-shadow:inset 0px 0px 0px 3px #ddd;
-	background-image: url('img/tmp001.jpg');
+	/*background-image: url('img/tmp001.jpg');*/
 	font-size:10px;
 }
 
