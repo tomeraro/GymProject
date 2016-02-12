@@ -3,8 +3,29 @@ angular.module('services.getGyms', [])
         function ($http) {
             'use strict';
 
-            var getGyms = function () {
-                return $http.get('/your route goes here...');
+            var getGyms = function (gymName, City, Price) {
+                var msg = [
+                    {
+                        name: gymName,
+                        city: City,
+                        price: Price
+                    },
+                    {
+                        name: gymName,
+                        city: City,
+                        price: Price
+                    },
+                    {
+                        name: gymName,
+                        city: City,
+                        price: Price
+                    }];
+                return msg;
+                /*$http.get('/SearchGym/'+gymName+'/'+City+'/'+Price+'')
+                 .success(function (response) {
+                 })
+                 .error(function() {
+                 });*/
             };
 
             var addGym = function () {
@@ -16,4 +37,3 @@ angular.module('services.getGyms', [])
                 addGym: addGym
             }
         }]);
-

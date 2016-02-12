@@ -105,7 +105,7 @@ function createNewGym(name, city, street, houseNumber, price, website){
         if(err)
             console.log(err);
         else{
-            console.log("save gym");
+            console.log("insert new gym to db");
         }
     })
 }
@@ -120,10 +120,9 @@ function createProduct(name, price, comment){
         if(err)
             console.log(err);
         else{
-            console.log("save product");
+            console.log("insert new product to db");
         }
     })
-
 }
 
 function createLesson(name, comment, time, numberOfPeople){
@@ -137,7 +136,7 @@ function createLesson(name, comment, time, numberOfPeople){
         if(err)
             console.log(err);
         else{
-            console.log("create lesson");
+            console.log("insert new lesson to db");
         }
     })
 }
@@ -152,7 +151,7 @@ function createAdmin(email, password){
         if(err)
             console.log(err);
         else{
-            console.log("create admin");
+            console.log("insert new admin to db");
         }
     })
 }
@@ -162,10 +161,14 @@ function createAdmin(email, password){
 // ----------- Admin ----------- //
 function login(email, password) {
     models.adminsTable.findOne({ email: email, password: password }, function (err, admin){
-        if(!admin)
+        if(!admin){
             console.log("not admin");
-        else
+            return false;
+        }
+        else{
             console.log("admin");
+            return true;
+        }
     })
 }
 
@@ -176,12 +179,45 @@ function deleteGym(name, address){
 
 }
 
-function deleteProduct() {
+function deleteProduct(name) {
 
+    //first delete the product from all the gyms...
+
+    //then delete the product from products table
+    models.productsTable.remove({name: name}, function (err) {
+        if (!err) {
+            console.log("product remove successful or if doesn't exist doesn't remove anything");
+        }
+        else console.log(err);
+    });
 }
 
-function deleteLesson() {
 
+function deleteLesson(name) {
+
+    //first delete the lesson from all the gyms...
+
+    //then delete the lesson from lessons table
+    models.lessonsTable.remove({name: name}, function (err) {
+        if (!err) {
+            console.log("lesson remove successful or if doesn't exist doesn't remove anything");
+        }
+        else console.log(err);
+    });
+}
+
+
+function deleteAdmin(name) {
+
+    //first check if the admin is root admin (the big boss..)
+
+    //then if not, delete the admin from admins table
+    models.adminsTable.remove({name: name}, function (err) {
+        if (!err) {
+            console.log("lesson remove successful or if doesn't exist doesn't remove anything");
+        }
+        else console.log(err);
+    });
 }
 
 

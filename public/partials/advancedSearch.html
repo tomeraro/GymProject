@@ -1,18 +1,25 @@
 <center>
-    <div style='width:500px;height:350px;background-color: black;background:rgba(0,0,0,0.5);margin-top:100px;;'>
-        <form class="form-inline" style="padding-top:30px;" >
-            <div class="form-group" style="float:left;display: block;margin-left:20px;color:white;"><b>Gym Name</b>&nbsp;&nbsp;&nbsp;
-                <input type="text" class="form-control" id="exampleInputName2" placeholder="Enter Gym Name" style="width:380px;">
-            </div>
+    <div class="main">
+        <div style="height: 100px;"></div>
+        <div style='width:500px;height:350px;background-color: black;background:rgba(0,0,0,0.5);'>
+            <form class="form-inline" name='advenceSearch' style="padding-top:30px;" ng-submit="searchGym()">
+                <div class="form-group" style="float:left;display: block;margin-left:20px;color:white;"><b>Gym Name</b>   
+                    <input ng-model="gymname" type="text" class="form-control" id="exampleInputName2" name='gymName' placeholder="Enter Gym Name" style="width:380px;">
+                </div>
 
-            <div class="form-group" style="float:left;margin-top: 20px;margin-left:21px;color:white;"><b>City</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter City Name" style="width:380px;">
-            </div>
+                <div class="form-group" style="float:left;margin-top: 20px;margin-left:21px;color:white;"><b>City</b>                
+                    <input ng-model="city" type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter City Name" name='gymCity' style="width:380px;">
+                </div>
 
-            <div class="form-group" style="float:left;margin-top: 20px;margin-left:21px;color:white;"><b>Price</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="USA$" style="width:100px;">
-            </div>
-            <button type="submit" class="btn btn-primary" style="width:480px;margin-top: 35px;">Search</button>
-        </form>
+                <div class="form-group" style="float:left;margin-top: 20px;margin-left:21px;color:white;"><b>Price</b>              
+                    <input ng-model="price" type="text" class="form-control" id="exampleInputEmail2" name="gymPrice" placeholder="USA$" style="width:100px;">
+                </div>
+
+                <!--todo CHANGE THE SUBMIT TO BTN to ng click-->
+                <input type="submit" value="Search" class="btn btn-primary" style="width:480px;margin-top: 35px;height: 30px;" >   </input>
+
+            </form>
+
         </div>
+    </div>
 </center>

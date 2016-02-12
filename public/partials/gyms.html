@@ -1,22 +1,18 @@
 <center>
-    <div style='width:500px;height:350px;background-color: black;background:rgba(0,0,0,0.5);margin-top:100px;text-align: left;'>
-        <div style="display: inline-block;margin-top:20px;color:#dedede;padding-left: 30px;"><b>Gym Name</b>&nbsp;&nbsp;&nbsp;
-                Go Active
+    <div ng-repeat="gym in gyms track by $index">
+        <div style='width:500px;height:350px;background-color: black;background:rgba(0,0,0,0.5);margin-top:100px;text-align: left;'>
 
-                </br></br>
-                <b>City</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Tel Aviv
+            <label>gym name</label>
+            <input ng-model="gym.name" style="display: inline-block;margin-top:20px;color:#dedede;padding-left: 30px;" readonly>
+            </br></br>
 
-                </br></br>
-                <b>Price</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                50$
-                </br></br>
-                <a href="http://www.go-active.co.il/" ><b>Go to WEB</b></a>
-        </div>
-        <div id="googleMap" style="width: 250px;height: 250px;float: right;background: red;margin:20px">
+            <label>City</label>
+            <input ng-model="gym.city" style="display: inline-block;margin-top:20px;color:#dedede;padding-left: 30px;" readonly>
+            </br></br>
 
+            <label>Price</label>
+            <input ng-model="gym.price" style="display: inline-block;margin-top:20px;color:#dedede;padding-left: 30px;" readonly>
+            </br></br>
         </div>
     </div>
-
-
 </center>

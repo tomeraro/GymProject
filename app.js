@@ -13,11 +13,8 @@ mongoose.connect('mongodb://localhost/GymProject', function(err) {
      console.log(err);
    } else {
      console.log('Connected to DB');
- }
+    }
  });
-
-
-
 
 
 var db = require('./DB/dbServices');

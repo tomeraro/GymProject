@@ -8,8 +8,14 @@ app.get('/', function(req, res) {
 });
 
 
-
-
+app.get('/SearchGym/:Gym/:city/:price', function(req, res) {
+  var gym = req.params['Gym'];
+  var city= req.params['city'];
+  var price= req.params['price'];
+  console.log(gym);
+  console.log(city);
+  console.log(price);
+});
 
 
 

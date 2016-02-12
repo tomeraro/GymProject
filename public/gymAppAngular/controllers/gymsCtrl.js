@@ -1,4 +1,4 @@
-angular.module('views.gyms', [])
+/*angular.module('views.gyms', [])
     .controller('gymsCtrl', ['$scope', 'getGyms', function ($scope, getGyms) {
         $scope.user = {
             name: 'Adi'
@@ -21,4 +21,10 @@ angular.module('views.gyms', [])
         }
 
         init();
+    }]);
+*/
+
+angular.module('views.gyms', [])
+    .controller('gymsCtrl',[ '$scope','$stateParams' ,function ($scope,$stateParams){
+        $scope.gyms = $stateParams.gyms;
     }]);

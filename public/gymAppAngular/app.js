@@ -36,6 +36,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         })
         .state('gyms', {
             url: '/gyms',
+            params: {
+                gyms: null
+            },
             templateUrl: '../partials/gyms.html',
             controller: 'gymsCtrl'
         })
@@ -46,7 +49,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         });
 
     $urlRouterProvider.otherwise(function ($injector) {
-        $injector.get('$state').go('main');
+        $injector.get('$state').go('advancedSearch');
     });
 }]);
 
