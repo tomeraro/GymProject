@@ -5,38 +5,41 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+//data base schemas
 var lessonSchema = new Schema({
-    name: String,
+    name: { type: String, index: true },
     comment: String,
-    time: Date,
+    time: String,
     numberOfPeople: Number
 });
 
 var productSchema = new Schema({
-    name: String,
+    name: { type: String, index: true },
     price: Number,
     comment: String
 });
 
 var gymSchema = new Schema({
-    name: String,
-    address: String,
+    name: { type: String, index: true },
+    city: String,
+    street: String,
+    houseNumber: String,
     price: Number,
     website: String,
     //lists
-    lessons: [lessonSchema],
-    products: [productSchema]
+    gymLessons: [{ type: Schema.Types.ObjectId, ref: 'lessons'}],
+    gymProducts: [{ type: Schema.Types.ObjectId, ref: 'products'}]
 });
 
-module.exports.gyms = mongoose.model('gym',gymSchema,'gyms');
-module.exports.lessons = mongoose.model('lesson',lessonSchema,'lessons');
-module.exports.products = mongoose.model('product',productSchema,'products');
+var adminSchema = new Schema({
+    email:  { type: String, index: true },
+    password: String
+});
 
-/*
-var Product = mongoose.model('products');
-exports.index = function(req,res) {
-    Product.create({
-        name: "yoga",
-        comment: "good"
-    });
-}*/
+module.exports.adminsTable = mongoose.model('admins',adminSchema);
+module.exports.gymsTable = mongoose.model('gyms',gymSchema);
+module.exports.productsTable = mongoose.model('products',productSchema);
+module.exports.lessonsTable = mongoose.model('lessons',lessonSchema);
+
+
+

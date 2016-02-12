@@ -15,7 +15,7 @@ angular.module('views.gyms', [])
                     // do some logic here..
 
                 } else {
-                    console.log(' no gyms avalible!')
+                    console.log('no gyms avalible!')
                 }
             })
         }
