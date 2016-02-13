@@ -17,6 +17,11 @@
 
 
 body{
+  background-image:url('../images/lockeRoom.jpg');
+  background-size:cover;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   margin:0;
 }
 
@@ -129,11 +134,7 @@ body{
 
 
 .main{
-  background-image:url('../images/lockeRoom.jpg');
-  width: 100%;
 
-  background-size:cover;
-  height: 700px;
 }
 
 header {
@@ -212,4 +213,40 @@ aside {
 .transitionsDiv {
   margin-bottom: 40px;
   margin-top: 30px;
+}
+
+/*################# GYMS #################*/
+#gymContainer{
+  width:500px;
+  height:350px;
+  background-color: black;
+  background:rgba(0,0,0,0.5);
+  margin-top:100px;
+  text-align: left;
+}
+
+
+.gymDes{
+  float:left;
+  display: block;
+  margin-left:20px;
+  color:white;
+  font-size: 15px;
+  width:232px;
+}
+
+#googleMap{
+  width:220px;
+  height: 190px;
+  background-color: red;
+  float: right;
+  margin: 10px;
+}
+
+#gymLogo{
+  width:220px;
+  height: 85px;
+  background-color: blue;
+  float: right;
+  margin: 10px;
 }

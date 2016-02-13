@@ -1,18 +1,22 @@
 <center>
     <div ng-repeat="gym in gyms track by $index">
-        <div style='width:500px;height:350px;background-color: black;background:rgba(0,0,0,0.5);margin-top:100px;text-align: left;'>
+        <div id="gymContainer">
+            <div id="googleMap"></div>
 
-            <label>gym name</label>
-            <input ng-model="gym.name" style="display: inline-block;margin-top:20px;color:#dedede;padding-left: 30px;" readonly>
-            </br></br>
+            <div class="form-group gymDes">Gym Name   
+                <input ng-model="gym.name" type="text" class="form-control" readonly>
+            </div>
 
-            <label>City</label>
-            <input ng-model="gym.city" style="display: inline-block;margin-top:20px;color:#dedede;padding-left: 30px;" readonly>
-            </br></br>
+            <div class="form-group gymDes">City  
+                <input ng-model="gym.city" type="text" class="form-control" readonly>
+            </div>
 
-            <label>Price</label>
-            <input ng-model="gym.price" style="display: inline-block;margin-top:20px;color:#dedede;padding-left: 30px;" readonly>
-            </br></br>
+            <div class="form-group gymDes">Price   
+                <input ng-model="gym.price" type="text" class="form-control" readonly>
+            </div>
+
+            <div id="gymLogo"></div>
+
         </div>
     </div>
 </center>
