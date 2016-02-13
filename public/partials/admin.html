@@ -3,20 +3,17 @@
 
 <div style="width:500px;height:200px;background-color: black;background:rgba(0,0,0,0.5);margin: auto; margin-top:100px;
     margin-bottom: 100px;">
+    <form class="form-inline" name='admin' style="padding-top:30px;" action="#" ng-submit="adminfunc()">
 
-
-
-
-    <form class="form-inline" style="padding-top:30px;" action="#" ng-controller="adminCtrl">>
             <div class="form-group" style="float:left;display: block;margin-left:20px;color:white;"><b>Email</b>&nbsp;&nbsp;&nbsp;
-                <input type="text" class="form-control" ng-model="mail" style="width:380px;">
+                <input ng-model="adminMail" type="text" class="form-control" ng-model="mail" style="width:380px;">
             </div>
 
             <div class="form-group" style="float:left;margin-top: 20px;margin-left:21px;color:white;"><b>Password</b>&nbsp;&nbsp;&nbsp;
-                <input type="text" class="form-control" ng-model="password" style="width:380px;">
+                <input ng-model="adminPassword" type="text" class="form-control" ng-model="password" style="width:380px;">
             </div>
 
-            <button type="submit" ngClick="Submit" class="btn btn-primary" style="width:480px;margin-top: 35px;">Login</button>
-        </form>
+            <input type="submit" value="Login" class="btn btn-primary" style="height:30px;width:480px;margin-top: 35px;"></input>
+    </form>
 
 </div>

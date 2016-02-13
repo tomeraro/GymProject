@@ -4,6 +4,7 @@ angular.module('services.getGyms', [])
             'use strict';
 
             var getGyms = function (gymName, City, Price) {
+                /*
                 var msg = [
                     {
                         name: gymName,
@@ -21,11 +22,12 @@ angular.module('services.getGyms', [])
                         price: Price
                     }];
                 return msg;
-                /*$http.get('/SearchGym/'+gymName+'/'+City+'/'+Price+'')
+                */
+                return $http.get('/SearchGym/'+gymName+'/'+City+'/'+Price+'')
                  .success(function (response) {
                  })
                  .error(function() {
-                 });*/
+                 });
             };
 
             var addGym = function () {

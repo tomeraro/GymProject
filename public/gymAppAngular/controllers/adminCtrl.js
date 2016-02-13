@@ -7,8 +7,14 @@
         console.log('the controller fired app');
     }]);*/
 
-var app = angular.module('views.admin', []);
-app.controller('adminCtrl',[ '$scope' ,function ($scope) {
-        console.log("----------- " + $scope.password + " ------------");
+angular.module('views.admin', [])
+        .controller('adminCtrl',[ '$scope','admin','$state' ,function ($scope,login,$state) {
+                $scope.adminfunc = function(){
+                    var info;
+                    $scope.data = login.login($scope.adminMail, $scope.adminPassword).then(function(data){
+                        info = data;
+                        console.log("data: "+data);
+                    });
+                }
 }]);
 

@@ -9,7 +9,9 @@ var app = angular.module('myApp', [
     'views.gyms',
     'views.about',
     'views.home',
-    'services.getGyms'
+
+    'services.getGyms',
+    'services.admin'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {

@@ -159,17 +159,24 @@ function createAdmin(email, password){
 
 
 // ----------- Admin ----------- //
-function login(email, password) {
-    models.adminsTable.findOne({ email: email, password: password }, function (err, admin){
-        if(!admin){
-            console.log("not admin");
-            return false;
-        }
-        else{
-            console.log("admin");
-            return true;
-        }
-    })
+models.adminsTable.loginAdmin =  function(email, password) {
+    var query  = models.adminsTable.findOne({ email: email, password: password},function (err) {
+        if (err)
+            console.log(err);
+    });
+
+    return query.exec(function (err, docs) {
+        return docs;
+    });
+
+    /*models.adminsTable.findOne({ email: email, password: password }, function (err, admin){
+     if(!admin){
+     return false;
+     }
+     else{
+     return true;
+     }
+     })*/
 }
 
 
@@ -236,7 +243,10 @@ function editLesson() {
 
 }
 
+// ########### FIND FUNCTIONS ########### //
 
+models.gymsTable.findGym =function(name,city,price){
+}
 
 
 
