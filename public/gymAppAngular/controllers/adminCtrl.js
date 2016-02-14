@@ -15,7 +15,11 @@ angular.module('views.admin', [])
                         info = data;
                         console.log("data: "+data);
 
-                        $state.go('adminmenu');
+                        if(!data){
+                            console.log("data is null");
+                            alert("wrong details. please try again");
+                        }
+                        else $state.go('adminmenu');
                     });
                 }
 }]);

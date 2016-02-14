@@ -14,7 +14,12 @@ app.get('/SearchGym/:Gym/:city/:price', function(req, res) {
   var gym = req.params['Gym'];
   var city= req.params['city'];
   var price= req.params['price'];
-  console.log(gym);
+  console.log("im in the search route");
+
+  models.gymsTable.findGym(gym,city,price).then(function (data) {
+    res.json(data);
+  });
+  /*console.log(gym);
   console.log(city);
   console.log(price);
   console.log("!!!!!!!!!!!!!!!!!!");

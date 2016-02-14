@@ -26,5 +26,11 @@
 
 angular.module('views.gyms', [])
     .controller('gymsCtrl',[ '$scope','$stateParams' ,function ($scope,$stateParams){
-        $scope.gyms = $stateParams.gyms;
+            console.log("------- im in the gym ctrl ----------- ");
+            console.log($stateParams);
+            $scope.gyms = $stateParams["gyms"];
+
+            //var tmp = $stateParams["gyms"][0];
+            //console.log(tmp["city"]);
+            //console.log(tmp["name"]);
     }]);

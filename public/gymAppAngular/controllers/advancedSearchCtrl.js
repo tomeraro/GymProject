@@ -9,7 +9,6 @@
 
 
 angular.module('views.advancedSearch', [])
-
     .controller('advancedSearchCtrl', ['$scope', 'getGyms','$state', function ($scope, getGyms,$state) {
 
         $scope.searchGym = function(){
@@ -20,13 +19,9 @@ angular.module('views.advancedSearch', [])
                 }
                 else {
                     var price = parseInt($scope.price);
-                    $scope.gyms = getGyms.getGyms($scope.gymname, $scope.city, price);
-                    var website = "www.ynet.co.il";
-
-                    $state.go('gyms',{gyms:$scope.gyms});
-
-                    //$state.go('gyms',{name:$scope.gyms.name, city: $scope.gyms.city,price:$scope.gyms.price,website:website});
-                    //$state.go('admin');
+                    $scope.gyms = getGyms.getGyms($scope.gymname, $scope.city, price).then(function(data){
+                        $state.go('gyms',{ gyms:data });
+                    });
                 }
             }
             else

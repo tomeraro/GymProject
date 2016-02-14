@@ -15,11 +15,13 @@
 
 body{
   background-image:url('../images/lockeRoom.jpg');
-  background-size:cover;
-  width: 100%;
+  background-size:100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  width: 100%;
   margin:0;
+
 }
 
 
@@ -119,6 +121,7 @@ body{
 
 .main{
 
+
 }
 
 header {
@@ -150,6 +153,7 @@ footer {
   font-size: 17px;
   padding-top: 5px;
   position: absolute;
+  bottom: 0;
 
 }
 
@@ -162,7 +166,6 @@ footer {
 
 
 section {
-  margin-left: 70px;
   float: left;
   width: 63%;
   font-size: 15px;
@@ -201,6 +204,7 @@ aside {
 
 
 .searchBox {
+  font-family: 'OpenHebrew', sans-serif;
   width:500px;
   height:280px;
   background-color: black;
@@ -225,6 +229,7 @@ aside {
 }
 
 .adminBox {
+  font-family: 'OpenHebrew', sans-serif;
   width:500px;
   height:200px;
   background-color: black;
@@ -234,6 +239,14 @@ aside {
   margin-bottom: 100px;"
 }
 
+
+
+.aboutDiv {
+  height:700px;
+  background-color: #ffffff;
+  font-family: geoma_regular;
+  font-size: 16px;
+}
 
 
 /*################# GYMS #################*/

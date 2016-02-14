@@ -4,7 +4,18 @@ angular.module('services.getGyms', [])
             'use strict';
 
             var getGyms = function (gymName, City, Price) {
-                var msg = [
+                return $http.get('/SearchGym/'+gymName+'/'+City+'/'+Price).then(function(data){
+                    if(data["data"] == null){
+                        console.log("data is null");
+                        return false;
+                    }
+                    else {
+                        return data["data"];
+                    }
+                });
+
+
+                /*var msg = [
                     {
                         name: 'bla bla',
                         city: City,
@@ -34,6 +45,8 @@ angular.module('services.getGyms', [])
             var addGym = function () {
                 return $http.post('/your POST req goes here...');
             };
+
+
 
             return {
                 getGyms: getGyms,

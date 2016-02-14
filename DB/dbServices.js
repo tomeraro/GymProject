@@ -155,6 +155,7 @@ models.adminsTable.loginAdmin =  function(email, password) {
 
 
 
+/*
 models.adminsTable.removeAdmin = function(name) {
 
     //first check if the admin is root admin (the big boss..)
@@ -170,7 +171,7 @@ models.adminsTable.removeAdmin = function(name) {
             return false;
         }
     });
-}
+}*/
 
 
 
@@ -237,19 +238,19 @@ function editLesson() {
 // -------------  SEARCH FUNCTIONS ------------- //
 
 models.gymsTable.findGym =function(name,city,price){
-    var query  = models.adminsTable.find({name: name, city:city, price: price },function (err) {
+    var query  = models.gymsTable.find({ name: name, city:city, price:price },function (err) {
         if (err)
             console.log(err);
     });
 
     return query.exec(function (err, gyms) {
-        return gyms;
+        return JSON.stringify(gyms);
     });
 }
 
 
 models.gymsTable.findAllGymsInCity =function(city){
-    var query  = models.adminsTable.find({city:city },function (err) {
+    var query  = models.gymsTable.find({city:city },function (err) {
         if (err)
             console.log(err);
     });
@@ -260,7 +261,7 @@ models.gymsTable.findAllGymsInCity =function(city){
 }
 
 models.gymsTable.findAllGymsInPrice =function(price){
-    var query  = models.adminsTable.find({price:price },function (err) {
+    var query  = models.gymsTable.find({price:price },function (err) {
         if (err)
             console.log(err);
     });
@@ -273,7 +274,7 @@ models.gymsTable.findAllGymsInPrice =function(price){
 
 models.gymsTable.findAllGyms = function() {
 
-    var query  = models.adminsTable.find({},function (err) {
+    var query  = models.gymsTable.find({},function (err) {
         if (err)
             console.log(err);
     });

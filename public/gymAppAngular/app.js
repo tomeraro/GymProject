@@ -51,9 +51,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             controller: 'homeCtrl'
         })
         .state('adminmenu', {
-        url: '/adminmenu',
-        templateUrl: '../partials/AdminHtml/adminmenu.html',
-        controller: 'adminMenuCtrl'
+            url: '/adminmenu',
+            templateUrl: '../partials/AdminHtml/adminmenu.html',
+            controller: 'adminMenuCtrl'
     });
 
     $urlRouterProvider.otherwise(function ($injector) {
