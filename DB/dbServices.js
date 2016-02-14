@@ -280,7 +280,7 @@ models.gymsTable.findAllGyms = function() {
     });
 
     return query.exec(function (err, gyms) {
-        return gyms;
+        return JSON.stringify(gyms);
     });
 }
 

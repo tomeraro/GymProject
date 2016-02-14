@@ -12,7 +12,10 @@ var app = angular.module('myApp', [
     'views.adminmenu',
     'services.getGyms',
     'services.admin',
-    'ngMap'
+    'ngMap',
+
+
+    'services.gymAdminService'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {

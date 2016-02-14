@@ -12,6 +12,7 @@ angular.module('views.advancedSearch', [])
     .controller('advancedSearchCtrl', ['$scope', 'getGyms','$state', function ($scope, getGyms,$state) {
 
         $scope.searchGym = function(){
+            $scope.aaa = 5;
             if(($scope.gymname) && ($scope.price) && ($scope.city)){
                 var isnum = /^\d+$/.test($scope.price);
                 if( isnum == 0){
