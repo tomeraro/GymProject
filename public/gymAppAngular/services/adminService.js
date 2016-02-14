@@ -5,19 +5,13 @@ angular.module('services.admin', [])
 
             var login = function (email, password) {
                 return $http.get('/login/'+email+'/'+password).then( function(data){
-                    console.log(data["data"]);
-                    var info = data["data"];
-                    return JSON.stringify(data["data"]);
-                    //return  data["data"];
+                    if(data["data"] == null)
+                        return false;
+                    else return JSON.stringify(data["data"]);
                 });
-            };
-
-            var addGym = function () {
-                return $http.post('/your POST req goes here...');
             };
 
             return {
                 login: login,
-                addGym: addGym
             }
         }]);

@@ -33,8 +33,6 @@ app.get('/login/:email/:password', function(req, res) {
   console.log("im in the route");
   var mail = req.params['email'];
   var password= req.params['password'];
-  //res.json(models.adminsTable.loginAdmin(mail,password));
-
   models.adminsTable.loginAdmin(mail,password).then(function (data) {
     res.json(data);
   });

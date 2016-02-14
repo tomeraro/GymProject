@@ -9,13 +9,13 @@ var Schema = mongoose.Schema;
 var lessonSchema = new Schema({
     name: { type: String, index: true },
     comment: String,
-    time: String,
-    numberOfPeople: Number
+    //time: String,
+    //numberOfPeople: Number
 });
 
 var productSchema = new Schema({
     name: { type: String, index: true },
-    price: Number,
+    //price: Number,
     comment: String
 });
 

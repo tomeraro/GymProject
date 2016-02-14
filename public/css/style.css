@@ -13,9 +13,6 @@
 
 
 
-
-
-
 body{
   background-image:url('../images/lockeRoom.jpg');
   background-size:cover;
@@ -25,10 +22,6 @@ body{
   margin:0;
 }
 
-
-#mainContent{
-
-}
 
 .box{
   width: 300px;
@@ -101,7 +94,6 @@ body{
 
 
 .navBar ul li {
-  /* This allow us to arrange list items in a row, without using float */
   display: inline-block;
   list-style-type: none;
   margin-left: 10px;
@@ -125,14 +117,6 @@ body{
   -webkit-border-radius: 5px;
 }
 
-
-
-
-
-
-
-
-
 .main{
 
 }
@@ -154,7 +138,6 @@ header {
   font-size: 34px;
   text-shadow: 5px 3px #000;
 }
-
 
 
 
@@ -215,6 +198,44 @@ aside {
   margin-top: 30px;
 }
 
+
+
+.searchBox {
+  width:500px;
+  height:280px;
+  background-color: black;
+  background:rgba(0,0,0,0.5);
+  margin: auto;
+  margin-top:100px;
+  margin-bottom: 100px;
+}
+
+
+.advancedSearchForm {
+  padding-top:30px;
+}
+
+
+.advancedSearchInputs {
+  float:left;
+  display: block;
+  margin-left:20px;
+  margin-top: 20px;
+  color:white;
+}
+
+.adminBox {
+  width:500px;
+  height:200px;
+  background-color: black;
+  background:rgba(0,0,0,0.5);
+  margin: auto;
+  margin-top:100px;
+  margin-bottom: 100px;"
+}
+
+
+
 /*################# GYMS #################*/
 #gymContainer{
   width:500px;
@@ -251,3 +272,4 @@ aside {
   float: right;
   margin: 10px;
 }
+

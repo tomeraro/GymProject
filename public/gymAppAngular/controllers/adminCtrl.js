@@ -14,6 +14,8 @@ angular.module('views.admin', [])
                     $scope.data = login.login($scope.adminMail, $scope.adminPassword).then(function(data){
                         info = data;
                         console.log("data: "+data);
+
+                        $state.go('adminmenu');
                     });
                 }
 }]);

@@ -9,9 +9,10 @@ var app = angular.module('myApp', [
     'views.gyms',
     'views.about',
     'views.home',
-
+    'views.adminmenu',
     'services.getGyms',
-    'services.admin'
+    'services.admin',
+    'ngMap'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
@@ -48,7 +49,12 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: 'home',
             templateUrl: '../partials/AdminHtml/temp.html',
             controller: 'homeCtrl'
-        });
+        })
+        .state('adminmenu', {
+        url: '/adminmenu',
+        templateUrl: '../partials/AdminHtml/adminmenu.html',
+        controller: 'adminMenuCtrl'
+    });
 
     $urlRouterProvider.otherwise(function ($injector) {
         $injector.get('$state').go('advancedSearch');

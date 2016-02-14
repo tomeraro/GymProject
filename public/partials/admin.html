@@ -1,16 +1,17 @@
 
 
 
-<div style="width:500px;height:200px;background-color: black;background:rgba(0,0,0,0.5);margin: auto; margin-top:100px;
-    margin-bottom: 100px;">
-    <form class="form-inline" name='admin' style="padding-top:30px;" action="#" ng-submit="adminfunc()">
+<div class="adminBox">
+    <form class="form-inline advancedSearchForm" name="admin" ng-submit="adminfunc()">
 
-            <div class="form-group" style="float:left;display: block;margin-left:20px;color:white;"><b>Email</b>&nbsp;&nbsp;&nbsp;
-                <input ng-model="adminMail" type="text" class="form-control" ng-model="mail" style="width:380px;">
+            <div class="form-group advancedSearchInputs">
+                <b>Email</b>
+                <input ng-model="adminMail" type="text" class="form-control" ng-model="mail" placeholder="Enter Email" style="width:380px;">
             </div>
 
-            <div class="form-group" style="float:left;margin-top: 20px;margin-left:21px;color:white;"><b>Password</b>&nbsp;&nbsp;&nbsp;
-                <input ng-model="adminPassword" type="text" class="form-control" ng-model="password" style="width:380px;">
+            <div class="form-group advancedSearchInputs">
+                <b>Password</b>
+                <input ng-model="adminPassword" type="text" class="form-control" ng-model="password" placeholder="Enter Password" style="width:380px;">
             </div>
 
             <input type="submit" value="Login" class="btn btn-primary" style="height:30px;width:480px;margin-top: 35px;"></input>

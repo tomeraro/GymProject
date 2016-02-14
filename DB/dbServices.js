@@ -7,34 +7,6 @@ var models = require('../DB/models')
 var mongoose = require('mongoose');
 
 
-//var gym = createNewGym('holmes place raanana','Hayezira st 10',60,'http://www.holmes-place.co.il');
-/*models.lessonsTable.findOne({ name: 'Yoga', time: 'Monday, 8pm to 10.30pm' }, function (err, lesson) {
-    if (!lesson)
-        console.log("not find lesson");
-    else {
-        console.log("find lesson");
-    }
-
-
-    models.gymsTable.findOne({name: 'Holmes Place Raanana'}, function (err, gym) {
-        if (!gym)
-            console.log("not find gym");
-        else {
-            console.log("find gym");
-            gym.gymLessons.push(lesson._id);
-            gym.save(function (err) {
-                if (err)
-                    console.log("error to update lesson");
-            })
-        }
-    })
-});
-
-*/
-
-
-
-
 initDB();
 function initDB(){
     var initAdmins = require('./initializationDB/initAdmin');
@@ -110,10 +82,9 @@ function createNewGym(name, city, street, houseNumber, price, website){
     })
 }
 
-function createProduct(name, price, comment){
+function createProduct(name, comment){
     var product = new models.productsTable({
         name: name,
-        price: price,
         comment: comment
     });
     product.save(function(err){
@@ -125,7 +96,7 @@ function createProduct(name, price, comment){
     })
 }
 
-function createLesson(name, comment, time, numberOfPeople){
+function createLesson(name, comment){
     var lesson = new models.lessonsTable({
         name: name,
         comment: comment,
@@ -160,14 +131,17 @@ function createAdmin(email, password){
 
 // ----------- Admin ----------- //
 models.adminsTable.loginAdmin =  function(email, password) {
+
     var query  = models.adminsTable.findOne({ email: email, password: password},function (err) {
         if (err)
             console.log(err);
     });
 
-    return query.exec(function (err, docs) {
-        return docs;
+    return query.exec(function (err, admin) {
+        return admin;
     });
+
+
 
     /*models.adminsTable.findOne({ email: email, password: password }, function (err, admin){
      if(!admin){
@@ -181,10 +155,38 @@ models.adminsTable.loginAdmin =  function(email, password) {
 
 
 
-// ------- Delete functions -------//
-function deleteGym(name, address){
+models.adminsTable.removeAdmin = function(name) {
 
+    //first check if the admin is root admin (the big boss..)
+
+    //then if not, delete the admin from admins table
+    models.adminsTable.remove({name: name}, function (err) {
+        if (!err) {
+            console.log("lesson remove successful or if doesn't exist doesn't remove anything");
+            return true;
+        }
+        else {
+            console.log(err);
+            return false;
+        }
+    });
 }
+
+
+
+
+
+
+// ------- Delete functions -------//
+function deleteGym(name){
+    models.gymsTable.remove({name: name}, function (err) {
+        if (!err) {
+            console.log("gym remove successful or if doesn't exist doesn't remove anything");
+        }
+        else console.log(err);
+    });
+}
+
 
 function deleteProduct(name) {
 
@@ -214,18 +216,7 @@ function deleteLesson(name) {
 }
 
 
-function deleteAdmin(name) {
 
-    //first check if the admin is root admin (the big boss..)
-
-    //then if not, delete the admin from admins table
-    models.adminsTable.remove({name: name}, function (err) {
-        if (!err) {
-            console.log("lesson remove successful or if doesn't exist doesn't remove anything");
-        }
-        else console.log(err);
-    });
-}
 
 
 
@@ -243,14 +234,86 @@ function editLesson() {
 
 }
 
-// ########### FIND FUNCTIONS ########### //
+// -------------  SEARCH FUNCTIONS ------------- //
 
 models.gymsTable.findGym =function(name,city,price){
+    var query  = models.adminsTable.find({name: name, city:city, price: price },function (err) {
+        if (err)
+            console.log(err);
+    });
+
+    return query.exec(function (err, gyms) {
+        return gyms;
+    });
+}
+
+
+models.gymsTable.findAllGymsInCity =function(city){
+    var query  = models.adminsTable.find({city:city },function (err) {
+        if (err)
+            console.log(err);
+    });
+
+    return query.exec(function (err, gymsInCity) {
+        return gymsInCity;
+    });
+}
+
+models.gymsTable.findAllGymsInPrice =function(price){
+    var query  = models.adminsTable.find({price:price },function (err) {
+        if (err)
+            console.log(err);
+    });
+
+    return query.exec(function (err, gymsInPrice) {
+        return gymsInPrice;
+    });
+}
+
+
+models.gymsTable.findAllGyms = function() {
+
+    var query  = models.adminsTable.find({},function (err) {
+        if (err)
+            console.log(err);
+    });
+
+    return query.exec(function (err, gyms) {
+        return gyms;
+    });
 }
 
 
 
 
+
+
+
+
+//var gym = createNewGym('holmes place raanana','Hayezira st 10',60,'http://www.holmes-place.co.il');
+/*models.lessonsTable.findOne({ name: 'Yoga', time: 'Monday, 8pm to 10.30pm' }, function (err, lesson) {
+ if (!lesson)
+ console.log("not find lesson");
+ else {
+ console.log("find lesson");
+ }
+
+
+ models.gymsTable.findOne({name: 'Holmes Place Raanana'}, function (err, gym) {
+ if (!gym)
+ console.log("not find gym");
+ else {
+ console.log("find gym");
+ gym.gymLessons.push(lesson._id);
+ gym.save(function (err) {
+ if (err)
+ console.log("error to update lesson");
+ })
+ }
+ })
+ });
+
+ */
 
 
 //login('tomer_aronovsky@hotmail.com', '12345');
