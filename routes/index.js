@@ -62,6 +62,19 @@ app.get('/adminMenu/', function(req, res) {
   });
 });
 
+app.get('/adminMenuProducts/', function(req, res){
+  console.log("im in the admin menu route- products");
+  models.productsTable.findAllProducts().then(function (data) {
+    res.json(data);
+  });
+});
+
+app.get('/adminMenuCourse/', function(req, res){
+  console.log("im in the admin menu route- products");
+  models.lessonsTable.findAllLessons().then(function (data) {
+    res.json(data);
+  });
+});
 
 
 

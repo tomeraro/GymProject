@@ -289,6 +289,51 @@ models.gymsTable.findAllGyms = function() {
 
 
 
+models.lessonsTable.findAllLessons = function() {
+
+    var query  = models.lessonsTable.find({},function (err) {
+        if (err)
+            console.log(err);
+    });
+
+    return query.exec(function (err, lessons) {
+        return JSON.stringify(lessons);
+    });
+}
+
+
+models.productsTable.findAllProducts = function() {
+
+    var query  = models.productsTable.find({},function (err) {
+        if (err)
+            console.log(err);
+    });
+
+    return query.exec(function (err, products) {
+        return JSON.stringify(products);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //var gym = createNewGym('holmes place raanana','Hayezira st 10',60,'http://www.holmes-place.co.il');

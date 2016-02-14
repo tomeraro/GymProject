@@ -18,7 +18,8 @@
             <div id='newArticle'><a href="creteGym.html" style='color:#fafafa;float:none;'>Add Lesson <i
                     class="fa fa-plus"></i></a></div>
         </div>
-        <div ng-include="'./partials/AdminHtml/gymsAdmin.html'"></div>
+        <!--<div ng-include="'./partials/AdminHtml/gymsAdmin.html'"></div>-->
+        <ng-include src="activeTab.url"></ng-include>
 
         <div class="grid_2 alpha" style="">
             <div style="background:#f1f1f1; height:100%;">
@@ -34,9 +35,9 @@
         <div style="background:#f1f1f1; height:262px;width:145px;height:260px;margin-top:20px;margin-left:10px">
 
                 <span style="display:block;padding-top:6px;padding-right:6px;">
-						<div id='webBarVlues' style='width:125px;'><a ui-sref="gymAdmin" style='color:#111;display:block;'> Gyms </a></div>
-						<div id='webBarVlues' style='width:125px;'><a ui-sref="productsAdmin" style='color:#111'>Products </a></div>
-						<div id='webBarVlues' style='width:125px;'><a ui-sref="courseAdmin" style='color:#111'> Course </a></div>
+						<div id='webBarVlues' style='width:125px;'><a ng-click="gyms()" style='color:#111;display:block;cursor:pointer;'> Gyms </a></div>
+						<div id='webBarVlues' style='width:125px;'><a ng-click="products()" style='color:#111;cursor:pointer;'>Products </a></div>
+						<div id='webBarVlues' style='width:125px;'><a ng-click="course()" style='color:#111;cursor:pointer;'> Course </a></div>
 					</span>
         </div>
 

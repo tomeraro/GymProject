@@ -11,8 +11,25 @@ angular.module('services.gymAdminService', [])
                 });
             };
 
+            var getAllProducts = function () {
+                return $http.get('/adminMenuProducts').then( function(data){
+                    if(data["data"] == null)
+                        return false;
+                    else return JSON.stringify(data["data"]);
+                });
+            };
+            var getAllCourse = function () {
+                return $http.get('/adminMenuCourse').then( function(data){
+                    if(data["data"] == null)
+                        return false;
+                    else return JSON.stringify(data["data"]);
+                });
+            };
+
             return {
                 getAllgyms: getAllgyms,
+                getAllProducts:getAllProducts,
+                getAllCourse:getAllCourse
             }
         }]);
 /**
