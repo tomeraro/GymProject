@@ -9,31 +9,6 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../views', 'index.html'));
 });
 
-/*
-app.get('/SearchGym/:Gym/:city/:price', function(req, res) {
-  var gym = req.params['Gym'];
-  var city= req.params['city'];
-  var price= req.params['price'];
-  console.log("im in the search route");
-
-  models.gymsTable.findGym(gym,city,price).then(function (data) {
-    res.json(data);
-  });
-  /*console.log(gym);
-  console.log(city);
-  console.log(price);
-  console.log("!!!!!!!!!!!!!!!!!!");
-  var gymData;
-models.gymsTable.findGym(gym,city,price,function(err,data){
-   // gymData =
-  });
-  console.log("!!!!!!!!!!!!!!!!!!");
-  console.log(gymData);
-  console.log("!!!!!!!!!!!!!!!!!!");
-
-});
- */
-
 app.get('/SearchGym/:Gym/:city', function(req, res) {
   var gym = req.params['Gym'];
   var city= req.params['city'];
@@ -60,7 +35,6 @@ app.get('/SearchGym/:city', function(req, res) {
     res.json(data);
   });
 });
-
 
 
 app.get('/login/:email/:password', function(req, res) {
@@ -93,6 +67,26 @@ app.get('/adminMenuCourse/', function(req, res){
     res.json(data);
   });
 });
+
+app.post('/addGym/', function(req, res){
+  console.log("add gym !");
+  //console.log(req.body.name);
+  models.gymsTable.createNewGym(req.body.name,req.body.city,req.body.street,req.body.houseNumber,req.body.price,req.body.website).then(function () {
+    res.sendStatus(200);
+    //items.saveNewItem(req.body, req.user.email);
+    //res.sendStatus(200);
+    //res.json(data);
+  });
+});
+
+app.post('/deleteGym/', function(req, res){
+  console.log("delete gym- at the server!");
+  console.log(req.body.name);
+  models.gymsTable.deleteGym(req.body.name).then(function () {
+    res.sendStatus(200);
+   });
+});
+
 
 
 

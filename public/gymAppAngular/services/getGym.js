@@ -63,13 +63,6 @@ angular.module('services.getGyms', [])
                 });
             };
 
-
-
-
-
-
-
-
             var addGym = function () {
                 return $http.post('/your POST req goes here...');
             };

@@ -64,7 +64,7 @@ function initDB(){
 
 
 // ----------- Create Functions ----------- //
-function createNewGym(name, city, street, houseNumber, price, website){
+models.gymsTable.createNewGym = function(name, city, street, houseNumber, price, website){
     var gym = new models.gymsTable({
                 name: name,
                 city: city,
@@ -179,7 +179,7 @@ models.adminsTable.removeAdmin = function(name) {
 
 
 // ------- Delete functions -------//
-function deleteGym(name){
+models.gymsTable.deleteGym = function(name){
     models.gymsTable.remove({name: name}, function (err) {
         if (!err) {
             console.log("gym remove successful or if doesn't exist doesn't remove anything");
@@ -248,8 +248,6 @@ models.gymsTable.findGym =function(name,city){
     });
 }
 
-
-
 models.gymsTable.findAllGymsInCity =function(city){
     var query  = models.gymsTable.find({city:city },function (err) {
         if (err)
@@ -260,19 +258,6 @@ models.gymsTable.findAllGymsInCity =function(city){
         return gymsInCity;
     });
 }
-
-models.gymsTable.findAllGymsByName =function(name){
-    var query  = models.gymsTable.find({name:name },function (err) {
-        if (err)
-            console.log(err);
-    });
-
-    return query.exec(function (err, gyms) {
-        return gyms;
-    });
-}
-
-
 
 models.gymsTable.findAllGyms = function() {
 
@@ -286,9 +271,16 @@ models.gymsTable.findAllGyms = function() {
     });
 }
 
+models.gymsTable.findAllGymsByName =function(name){
+    var query  = models.gymsTable.find({name:name },function (err) {
+        if (err)
+            console.log(err);
+    });
 
-
-
+    return query.exec(function (err, gyms) {
+        return gyms;
+    });
+}
 
 
 models.lessonsTable.findAllLessons = function() {
@@ -315,6 +307,7 @@ models.productsTable.findAllProducts = function() {
         return JSON.stringify(products);
     });
 }
+
 
 
 

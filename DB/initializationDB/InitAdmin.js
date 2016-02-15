@@ -9,6 +9,6 @@ var initAdmin = [
     }
 ]
 
-
 module.exports = initAdmin;
+
 

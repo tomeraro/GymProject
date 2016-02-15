@@ -26,12 +26,44 @@ angular.module('services.gymAdminService', [])
                 });
             };
 
+            var CreateNewGym = function (data) {
+                $http.post('/addGym',data).success(function(){
+                        console.log('ok!');
+                    })
+                    .error(function(err) {
+                        console.log('Error: ' + err);
+                    });
+            }
+            var DeleteGym = function (data) {
+                $http.post('/deleteGym',data).success(function(){
+                        console.log('gym has been deleted!');
+                    })
+                    .error(function(err) {
+                        console.log('Error: ' + err);
+                    });
+            }
+
             return {
                 getAllgyms: getAllgyms,
                 getAllProducts:getAllProducts,
-                getAllCourse:getAllCourse
+                getAllCourse:getAllCourse,
+                CreateNewGym:CreateNewGym,
+                DeleteGym:DeleteGym
             }
         }]);
 /**
  * Created by Eli on 14/02/2016.
  */
+
+
+/*
+ // when submitting the add form, send the item to the node API
+ $scope.createItem = function(){
+ $http.post('/addNewItems', $scope.formData)
+ .success(function() {
+ $location.path('#/');
+ })
+ .error(function(err) {
+ console.log('Error: ' + err);
+ });
+ };*/

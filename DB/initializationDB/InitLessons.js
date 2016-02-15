@@ -10,7 +10,33 @@ var initLessons = [
     {
         "name": "Yoga",
         "comment": "Running in the machines as a group is better way to lose calories and have fun"
+    },
+    {
+        "name": "Pilatis",
+        "comment": "Pilatis lesson, very good choise"
+    },
+    {
+        "name": "Kickboxexercise",
+        "comment": "Kickbox lesson"
+    },
+    {
+        "name": "Dance",
+        "comment": "Dance lesson for all ages"
+    },
+    {
+        "name": "Step Classes",
+        "comment": "Step Classes practice"
+    },
+    {
+        "name": "Cardio",
+        "comment": "Cardio practice"
+    },
+    {
+        "name": "Zumba",
+        "comment": "Come and dance with us!"
     }
+
+
 ]
 
 
