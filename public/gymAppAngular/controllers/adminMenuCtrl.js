@@ -10,11 +10,19 @@ angular.module('views.adminmenu', [])
             url: './partials/AdminHtml/productsAdmin.html'
         }, {
             url: './partials/AdminHtml/courseAdmin.html'
-        }];
+        },
+            {
+                url: './partials/AdminHtml/createGym.html'
+            }
+
+
+
+        ];
         $scope.activeTab = $scope.tabs[0];
         $scope.gymTab= $scope.tabs[0];
         $scope.productTab= $scope.tabs[1];
         $scope.CourseTab= $scope.tabs[2];
+        $scope.CreateGymTab= $scope.tabs[3];
 
         var init = function () {
             $scope.data = adminGyms.getAllgyms().then(function(data){
@@ -62,4 +70,11 @@ angular.module('views.adminmenu', [])
             });
 
         }
+
+        $scope.CreateGym = function(){
+            $scope.activeTab = $scope.tabs[3];
+        }
+
+
+
 }]);
