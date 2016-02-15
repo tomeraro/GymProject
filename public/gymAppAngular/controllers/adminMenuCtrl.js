@@ -11,15 +11,19 @@ angular.module('views.adminmenu', [])
         }, {
             url: './partials/AdminHtml/courseAdmin.html'
         },
-            {
-                url: './partials/AdminHtml/createGym.html'
-            }
+        {
+            url: './partials/AdminHtml/createGym.html'
+        },
+        {
+            url: './partials/AdminHtml/editGym.html'
+        }
         ];
         $scope.activeTab = $scope.tabs[0];
         $scope.gymTab= $scope.tabs[0];
         $scope.productTab= $scope.tabs[1];
         $scope.CourseTab= $scope.tabs[2];
         $scope.CreateGymTab= $scope.tabs[3];
+        $scope.editGymTab= $scope.tabs[4];
 
 
 
@@ -72,6 +76,17 @@ angular.module('views.adminmenu', [])
 
         $scope.CreateGym = function(){
             $scope.activeTab = $scope.tabs[3];
+        }
+        $scope.editGym = function(gym){
+            $scope.activeTab = $scope.tabs[4];
+            $scope.gymname = gym.name;
+            $scope.gymcity = gym.city;
+            $scope.gymstreet =gym.street;
+            $scope.gymhouseNum = gym.houseNumber;
+            $scope.gymprice = gym.price;
+            $scope.gymwebsite = gym.website;
+            //$scope.Amino = true;
+
         }
 
 

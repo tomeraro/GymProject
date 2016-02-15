@@ -4,8 +4,8 @@
 
 var initAdmin = [
     {
-        "email" : "tomer_aronovsky@hotmail.com",
-        "password" : "12345"
+        "email" : "a",
+        "password" : "1"
     }
 ]
 
