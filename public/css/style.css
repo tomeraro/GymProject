@@ -206,7 +206,7 @@ aside {
 .searchBox {
   font-family: 'OpenHebrew', sans-serif;
   width:500px;
-  height:280px;
+  height:330px;
   background-color: black;
   background:rgba(0,0,0,0.5);
   margin: auto;
@@ -216,7 +216,7 @@ aside {
 
 
 .advancedSearchForm {
-  padding-top:30px;
+  padding-top:5px;
 }
 
 
@@ -261,7 +261,7 @@ aside {
 
 
 .gymDes{
-  margin-top: 15px;
+  margin-top: 7px;
   float:left;
   display: block;
   margin-left:20px;

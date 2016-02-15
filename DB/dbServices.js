@@ -237,8 +237,8 @@ function editLesson() {
 
 // -------------  SEARCH FUNCTIONS ------------- //
 
-models.gymsTable.findGym =function(name,city,price){
-    var query  = models.gymsTable.find({ name: name, city:city, price:price },function (err) {
+models.gymsTable.findGym =function(name,city){
+    var query  = models.gymsTable.find({ name: name, city:city },function (err) {
         if (err)
             console.log(err);
     });
@@ -247,6 +247,7 @@ models.gymsTable.findGym =function(name,city,price){
         return JSON.stringify(gyms);
     });
 }
+
 
 
 models.gymsTable.findAllGymsInCity =function(city){
@@ -260,16 +261,17 @@ models.gymsTable.findAllGymsInCity =function(city){
     });
 }
 
-models.gymsTable.findAllGymsInPrice =function(price){
-    var query  = models.gymsTable.find({price:price },function (err) {
+models.gymsTable.findAllGymsByName =function(name){
+    var query  = models.gymsTable.find({name:name },function (err) {
         if (err)
             console.log(err);
     });
 
-    return query.exec(function (err, gymsInPrice) {
-        return gymsInPrice;
+    return query.exec(function (err, gyms) {
+        return gyms;
     });
 }
+
 
 
 models.gymsTable.findAllGyms = function() {

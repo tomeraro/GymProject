@@ -34,16 +34,34 @@ models.gymsTable.findGym(gym,city,price,function(err,data){
 });
  */
 
-app.get('/SearchGym/:Gym/:city/:price', function(req, res) {
+app.get('/SearchGym/:Gym/:city', function(req, res) {
   var gym = req.params['Gym'];
   var city= req.params['city'];
-  var price= req.params['price'];
   console.log("im in the search route");
 
-  models.gymsTable.findGym(gym,city,price).then(function (data) {
+  models.gymsTable.findGym(gym,city).then(function (data) {
     res.json(data);
   });
 });
+
+app.get('/SearchGymByName/:name', function(req, res) {
+  var name= req.params['name'];
+
+  models.gymsTable.findAllGymsByName(name).then(function (data) {
+    res.json(data);
+  });
+});
+
+
+app.get('/SearchGym/:city', function(req, res) {
+  var city= req.params['city'];
+
+  models.gymsTable.findAllGymsInCity(city).then(function (data) {
+    res.json(data);
+  });
+});
+
+
 
 app.get('/login/:email/:password', function(req, res) {
   console.log("im in the route");

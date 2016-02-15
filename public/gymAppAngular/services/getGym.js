@@ -3,8 +3,8 @@ angular.module('services.getGyms', [])
         function ($http) {
             'use strict';
 
-            var getGyms = function (gymName, City, Price) {
-                return $http.get('/SearchGym/'+gymName+'/'+City+'/'+Price).then(function(data){
+            var getGyms = function (gymName, City) {
+                return $http.get('/SearchGym/'+gymName+'/'+City).then(function(data){
                     if(data["data"] == null){
                         console.log("data is null");
                         return false;
@@ -13,34 +13,62 @@ angular.module('services.getGyms', [])
                         return data["data"];
                     }
                 });
-
-
-                /*var msg = [
-                    {
-                        name: 'bla bla',
-                        city: City,
-                        price: Price,
-                        position: '[48.74, -80.18]'
-                    },
-                    {
-                        name: gymName,
-                        city: City,
-                        price: Price,
-                        position: '[48.74, -80.18]'
-                    },
-                    {
-                        name: gymName,
-                        city: City,
-                        price: Price,
-                        position: '[48.74, -80.18]'
-                    }];
-                return msg;
-                /*$http.get('/SearchGym/'+gymName+'/'+City+'/'+Price+'')
-                 .success(function (response) {
-                 })
-                 .error(function() {
-                 });*/
             };
+
+            var getGymsByCity = function (city){
+                return $http.get('/SearchGym/'+city).then(function(data){
+                    if(data["data"] == null){
+                        console.log("data is null");
+                        return false;
+                    }
+                    else {
+                        return data["data"];
+                    }
+                });
+            };
+
+            var getGymsByName = function (name){
+                return $http.get('/SearchGymByName/'+name).then(function(data){
+                    if(data["data"] == null){
+                        console.log("data is null");
+                        return false;
+                    }
+                    else {
+                        return data["data"];
+                    }
+                });
+            };
+
+            var getGymsByLesson = function (lesson){
+                return $http.get('/SearchGymByLesson/'+lesson).then(function(data){
+                    if(data["data"] == null){
+                        console.log("data is null");
+                        return false;
+                    }
+                    else {
+                        return data["data"];
+                    }
+                });
+            };
+
+            var getGymsByProduct = function (product){
+                return $http.get('/SearchGymByProduct/'+product).then(function(data){
+                    if(data["data"] == null){
+                        console.log("data is null");
+                        return false;
+                    }
+                    else {
+                        return data["data"];
+                    }
+                });
+            };
+
+
+
+
+
+
+
 
             var addGym = function () {
                 return $http.post('/your POST req goes here...');
@@ -50,6 +78,11 @@ angular.module('services.getGyms', [])
 
             return {
                 getGyms: getGyms,
+                getGymsByCity: getGymsByCity,
+                getGymsByName: getGymsByName,
+                getGymsByProduct: getGymsByProduct,
+                getGymsByLesson: getGymsByLesson,
+
                 addGym: addGym
             }
         }]);

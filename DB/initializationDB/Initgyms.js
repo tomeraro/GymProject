@@ -22,6 +22,16 @@ var initGyms = [
         "website" : "http://joy-gym.co.il",
         "gymLessons" : [],
         "gymProducts" : []
+    },
+    {
+        "name" : "Grate Shape Raanana",
+        "city" : "Raanana",
+        "street" : "Ahuza",
+        "houseNumber" : "142",
+        "price" : 60,
+        "website" : "http://great-shape.co.il/%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%A8%D7%A2%D7%A0%D7%A0%D7%94/",
+        "gymLessons" : [],
+        "gymProducts" : []
     }
 ]
 

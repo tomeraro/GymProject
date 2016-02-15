@@ -12,20 +12,43 @@ angular.module('views.advancedSearch', [])
     .controller('advancedSearchCtrl', ['$scope', 'getGyms','$state', function ($scope, getGyms,$state) {
 
         $scope.searchGym = function(){
-            if(($scope.gymname) && ($scope.price) && ($scope.city)){
-                var isnum = /^\d+$/.test($scope.price);
-                if( isnum == 0){
-                    alert("please enter valid price");
-                }
-                else {
-                    var price = parseInt($scope.price);
-                    $scope.gyms = getGyms.getGyms($scope.gymname, $scope.city, price).then(function(data){
-                        $state.go('gyms',{ gyms:data });
-                    });
-                }
+            var lesson =  $scope.test;
+            var product =  $scope.comment;
+
+
+            if(($scope.name == null) && ($scope.city != null) && (lesson == null) && (product == null)){
+                $scope.gyms = getGyms.getGymsByCity($scope.city).then(function(data){
+                    $state.go('gyms',{ gyms:data });
+                });
             }
-            else
-                alert("Please enter ALL VALUES");
+
+            else if(($scope.name) && ($scope.city) && (lesson == null) && (product == null)){
+                $scope.gyms = getGyms.getGyms($scope.name, $scope.city).then(function(data){
+                    $state.go('gyms',{ gyms:data });
+                });
+            }
+
+            else if(($scope.name !=null) && ($scope.city==null) && (lesson == null) && (product == null)){
+
+                $scope.gyms = getGyms.getGymsByName($scope.name).then(function(data){
+                    $state.go('gyms',{ gyms:data });
+                });
+            }
+
+            else if((($scope.name==null) && ($scope.city==null) && (lesson != null) && (product == null))){
+                $scope.gyms = getGyms.getGymsByLesson(lesson).then(function(data){
+                    $state.go('gyms',{ gyms:data });
+                });
+            }
+
+            else if ((($scope.name==null) && ($scope.city==null) && (lesson == null) && (product != null))){
+                $scope.gyms = getGyms.getGymsByProduct(product).then(function(data){
+                    $state.go('gyms',{ gyms:data });
+                });
+            }
+
+
+
 
         }
 
