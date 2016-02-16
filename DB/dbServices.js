@@ -83,51 +83,6 @@ models.gymsTable.createNewGym = function(name, city, street, houseNumber, price,
     });
 }
 
-function createProduct(name, comment){
-    var product = new models.productsTable({
-        name: name,
-        comment: comment
-    });
-    product.save(function(err){
-        if(err)
-            console.log(err);
-        else{
-            console.log("insert new product to db");
-        }
-    })
-}
-
-function createLesson(name, comment){
-    var lesson = new models.lessonsTable({
-        name: name,
-        comment: comment,
-        time: time,
-        numberOfPeople: numberOfPeople
-    });
-    lesson.save(function(err){
-        if(err)
-            console.log(err);
-        else{
-            console.log("insert new lesson to db");
-        }
-    })
-}
-
-
-function createAdmin(email, password){
-    var admin = new models.adminsTable({
-        email: email,
-        password: password
-    });
-    admin.save(function(err){
-        if(err)
-            console.log(err);
-        else{
-            console.log("insert new admin to db");
-        }
-    })
-}
-
 
 
 // ----------- Admin ----------- //
@@ -146,11 +101,6 @@ models.adminsTable.loginAdmin =  function(email, password) {
 }
 
 
-
-
-
-
-
 // ------- Delete functions -------//
 models.gymsTable.deleteGym = function(name){
     models.gymsTable.remove({name: name}, function (err) {
@@ -163,9 +113,6 @@ models.gymsTable.deleteGym = function(name){
 
 
 
-
-
-
 // ------ Edit functions -------//
 function editGym() {
 
@@ -173,18 +120,18 @@ function editGym() {
 
 
 
+models.gymsTable.editReturnGymProductsAndLessons =function(name){
+    var query =  models.gymsTable.find({name:name })
+        .populate('gymLessons', 'name').populate('gymProducts','name');
+    return query.exec(function(err, gyms){
+        return JSON.stringify(gyms);
+    });
+}
+
+
 // -------------  SEARCH FUNCTIONS ------------- //
 
 models.gymsTable.findGym =function(name,city){
-    /*var query  = models.gymsTable.find({ name: name, city:city },function (err) {
-        if (err)
-            console.log(err);
-    });
-
-    return query.exec(function (err, gyms) {
-        return JSON.stringify(gyms);
-    });*/
-
     var query =  models.gymsTable.find({name:name, city:city})
         .populate('gymLessons', 'name').populate('gymProducts','name');
     return query.exec(function(err, gyms){
@@ -202,7 +149,6 @@ models.gymsTable.findAllGymsInCity =function(city){
 }
 
 models.gymsTable.findAllGyms = function() {
-
     var query  = models.gymsTable.find({},function (err) {
         if (err)
             console.log(err);
@@ -222,17 +168,107 @@ models.gymsTable.findAllGymsByName =function(name){
 }
 
 
+models.gymsTable.findAllGymsByLesson = function(lessonName, callback) {
 
-
-models.gymsTable.findAllGymsByLesson =function(lessonName){
-    var query =  models.lessonsTable.find({name:lessonName});
-
-    return query.exec(function(err, lessonName){
-        var query2 =  models.lessonsTable.find({name:lessonName})
-            .populate('gyms','name');
-
-    });
+    models.lessonsTable.findOne({name: lessonName}, function(err, lesson) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            var query = models.gymsTable.find({ gymLessons: lesson["_id"] }).populate('gymLessons', 'name')
+                .populate('gymProducts','name');
+            return query.exec(function(err,gyms){
+                    callback(gyms);
+                })
+        }
+    })
 }
+
+
+
+models.gymsTable.findGymByNameCityLesson = function(name, city, lessonName, callback) {
+
+    models.lessonsTable.findOne({name: lessonName}, function(err, lesson) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            var query = models.gymsTable.find({ gymLessons: lesson["_id"], name:name, city: city }).populate('gymLessons', 'name')
+                .populate('gymProducts','name');
+            return query.exec(function(err,gyms){
+                callback(gyms);
+            })
+        }
+    })
+}
+
+
+models.gymsTable.findGymByNameLesson = function(name, lessonName, callback) {
+    models.lessonsTable.findOne({name: lessonName}, function(err, lesson) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            var query = models.gymsTable.find({ gymLessons: lesson["_id"], name:name }).populate('gymLessons', 'name')
+                .populate('gymProducts','name');
+            return query.exec(function(err,gyms){
+                callback(gyms);
+            })
+        }
+    })
+}
+
+
+models.gymsTable.findGymByCityLesson = function(city, lessonName, callback) {
+    models.lessonsTable.findOne({name: lessonName}, function(err, lesson) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            var query = models.gymsTable.find({ gymLessons: lesson["_id"], city:city }).populate('gymLessons', 'name')
+                .populate('gymProducts','name');
+            return query.exec(function(err,gyms){
+                callback(gyms);
+            })
+        }
+    })
+}
+
+
+
+
+//    var query = models.lessonsTable.find({name: lessonName}, function (err) {
+//        if (err)
+//            console.log(err);
+//    });
+//
+//    return query.exec(function (err, lesson) {
+//        var s = models.gymsTable.find({gymLessons: mongoose.Types.ObjectId(lesson[0]["_id"])}, function (err) {
+//        });
+//        return s.exec(function(err, gyms){
+//            return JSON.stringify(gyms);
+//        });
+//        /*var query =  models.lessonsTable.find({name:lessonName}, function(err){
+//         if (err)
+//         console.log(err);
+//         });
+//
+//         return query.exec(function (err, lesson) {
+//
+//
+//         var query1 = models.gymsTable.find({_id: {$in}}, function(err){
+//         if(err)
+//         console.log(err);
+//         });
+//         return query1.exec(function(err, gyms){
+//         return JSON.stringify(gyms);
+//         });
+//
+//
+//         console.log("#################" + lesson[0]["_id"]);
+//         });*/
+//    });
+//}
 
 
 

@@ -1,5 +1,9 @@
 
 <center>
+    <div ng-if="gyms.length == 0" style="margin-top: 50px;">
+        <span style="font-size: 50px; color: #204d74; text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+"> לא נמצאו תוצאות לחיפוש שלך</span>
+    </div>
     <div ng-repeat="gym in gyms track by $index">
         <div id="gymContainer">
        <!--     <div id="googleMap"> <ng-map zoom="11" center={{gym.location}}>

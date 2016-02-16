@@ -5,36 +5,53 @@ angular.module('views.advancedSearch', [])
             var lesson =  $scope.test;
            // var product =  $scope.comment;
 
-
+            //only city search
             if(($scope.name == null) && ($scope.city != null) && (lesson == null)){
                 $scope.gyms = getGyms.getGymsByCity($scope.city).then(function(data){
                     $state.go('gyms',{ gyms:data });
                 });
             }
-
+            //name & city search
             else if(($scope.name) && ($scope.city) && (lesson == null)){
                 $scope.gyms = getGyms.getGyms($scope.name, $scope.city).then(function(data){
                     $state.go('gyms',{ gyms:data });
                 });
             }
-
+            //only name search
             else if(($scope.name !=null) && ($scope.city==null) && (lesson == null)){
 
                 $scope.gyms = getGyms.getGymsByName($scope.name).then(function(data){
                     $state.go('gyms',{ gyms:data });
                 });
             }
-
+            //only lesson search
             else if((($scope.name==null) && ($scope.city==null) && (lesson != null))){
+
                 $scope.gyms = getGyms.getGymsByLesson(lesson).then(function(data){
                     $state.go('gyms',{ gyms:data });
                 });
             }
+            //name & city & lesson search
+            else if((($scope.name!=null) && ($scope.city!=null) && (lesson != null))){
 
+                $scope.gyms = getGyms.getGymByNameCityLesson($scope.name, $scope.city, lesson).then(function(data){
+                    $state.go('gyms',{ gyms:data });
+                });
+            }
+            //name & lesson search
+            else if((($scope.name!=null) && ($scope.city==null) && (lesson != null))){
 
+                $scope.gyms = getGyms.getGymByNameLesson($scope.name, lesson).then(function(data){
+                    $state.go('gyms',{ gyms:data });
+                });
+            }
+            // city & lesson
+            else if((($scope.name==null) && ($scope.city!=null) && (lesson != null))){
 
-
-
+                $scope.gyms = getGyms.getGymByCityLesson($scope.city, lesson).then(function(data){
+                    $state.go('gyms',{ gyms:data });
+                });
+            }
 
         }
 

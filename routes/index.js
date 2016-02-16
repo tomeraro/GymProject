@@ -40,10 +40,39 @@ app.get('/SearchGym/:city', function(req, res) {
 app.get('/SearchGymByLesson/:lesson', function(req, res) {
   var lesson= req.params['lesson'];
 
-  models.gymsTable.findAllGymsByLesson(lesson).then(function (data) {
-    res.json(data);
+  models.gymsTable.findAllGymsByLesson(lesson, function (gyms) {
+      res.json(gyms);
+    });
+  });
+
+
+app.get('/SearchGymByNameCityLesson/:name/:city/:lesson', function(req, res) {
+  var name= req.params['name'];
+  var city= req.params['city'];
+  var lesson= req.params['lesson'];
+  models.gymsTable.findGymByNameCityLesson(name, city, lesson, function (gyms) {
+    res.json(gyms);
   });
 });
+
+
+app.get('/SearchGymByNameLesson/:name/:lesson', function(req, res) {
+  var name= req.params['name'];
+  var lesson= req.params['lesson'];
+  models.gymsTable.findGymByNameLesson(name, lesson, function (gyms) {
+    res.json(gyms);
+  });
+});
+
+
+app.get('/SearchGymByCityLesson/:city/:lesson', function(req, res) {
+  var city= req.params['city'];
+  var lesson= req.params['lesson'];
+  models.gymsTable.findGymByCityLesson(city, lesson, function (gyms) {
+    res.json(gyms);
+  });
+});
+
 
 
 app.get('/login/:email/:password', function(req, res) {

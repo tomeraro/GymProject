@@ -51,8 +51,32 @@ angular.module('services.getGyms', [])
                 });
             };
 
-            var getGymsByProduct = function (product){
-                return $http.get('/SearchGymByProduct/'+product).then(function(data){
+            var getGymByNameCityLesson = function (name, city, lesson){
+                return $http.get('/SearchGymByNameCityLesson/'+name+"/"+city+"/"+lesson).then(function(data){
+                    if(data["data"] == null){
+                        console.log("data is null");
+                        return false;
+                    }
+                    else {
+                        return data["data"];
+                    }
+                });
+            };
+
+            var getGymByNameLesson = function (name, lesson){
+                return $http.get('/SearchGymByNameLesson/'+name+"/"+lesson).then(function(data){
+                    if(data["data"] == null){
+                        console.log("data is null");
+                        return false;
+                    }
+                    else {
+                        return data["data"];
+                    }
+                });
+            };
+
+            var getGymByCityLesson = function (city, lesson){
+                return $http.get('/SearchGymByCityLesson/'+city+"/"+lesson).then(function(data){
                     if(data["data"] == null){
                         console.log("data is null");
                         return false;
@@ -73,9 +97,10 @@ angular.module('services.getGyms', [])
                 getGyms: getGyms,
                 getGymsByCity: getGymsByCity,
                 getGymsByName: getGymsByName,
-                getGymsByProduct: getGymsByProduct,
+                getGymByNameCityLesson: getGymByNameCityLesson,
+                getGymByCityLesson: getGymByCityLesson,
+                getGymByNameLesson: getGymByNameLesson,
                 getGymsByLesson: getGymsByLesson,
-
                 addGym: addGym
             }
         }]);

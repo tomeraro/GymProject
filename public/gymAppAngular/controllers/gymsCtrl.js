@@ -30,4 +30,5 @@ angular.module('views.gyms', [])
             console.log($stateParams);
             $scope.gyms = $stateParams["gyms"];
 
+
     }]);
