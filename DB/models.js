@@ -26,8 +26,9 @@ var gymSchema = new Schema({
     houseNumber: String,
     price: Number,
     website: String,
+    //location: String,
     //lists
-    gymLessons: [{ type: Schema.Types.ObjectId, ref: 'lessons'}],
+    gymLessons: [ {type: Schema.Types.ObjectId, ref: 'lessons'}],
     gymProducts: [{ type: Schema.Types.ObjectId, ref: 'products'}]
 });
 

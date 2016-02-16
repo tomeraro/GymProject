@@ -10,6 +10,7 @@ var initGyms = [
         "houseNumber" : "1",
         "price" : 90,
         "website" : "http://www.holmesplace.co.il/clubs_services/club/570",
+        "location" : "[32.1925545,34.8869365]",
         "gymLessons" : [],
         "gymProducts" : []
     },

@@ -42,13 +42,30 @@ angular.module('services.gymAdminService', [])
                         console.log('Error: ' + err);
                     });
             }
+            var getProducts = function (data) {
+                return $http.get('/getProducts').then( function(data){
+                    if(data["data"] == null)
+                        return false;
+                    else return JSON.stringify(data["data"]);
+                });
+            }
+
+            var getCourse = function (data) {
+                return $http.get('/getCourse').then( function(data){
+                    if(data["data"] == null)
+                        return false;
+                    else return JSON.stringify(data["data"]);
+                });
+            }
 
             return {
                 getAllgyms: getAllgyms,
                 getAllProducts:getAllProducts,
                 getAllCourse:getAllCourse,
                 CreateNewGym:CreateNewGym,
-                DeleteGym:DeleteGym
+                DeleteGym:DeleteGym,
+                getProducts:getProducts,
+                getCourse:getCourse
             }
         }]);
 /**

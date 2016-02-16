@@ -37,6 +37,15 @@ app.get('/SearchGym/:city', function(req, res) {
 });
 
 
+app.get('/SearchGymByLesson/:lesson', function(req, res) {
+  var lesson= req.params['lesson'];
+
+  models.gymsTable.findAllGymsByLesson(lesson).then(function (data) {
+    res.json(data);
+  });
+});
+
+
 app.get('/login/:email/:password', function(req, res) {
   console.log("im in the route");
   var mail = req.params['email'];
@@ -70,8 +79,8 @@ app.get('/adminMenuCourse/', function(req, res){
 
 app.post('/addGym/', function(req, res){
   console.log("add gym !");
-  //console.log(req.body.name);
-  models.gymsTable.createNewGym(req.body.name,req.body.city,req.body.street,req.body.houseNumber,req.body.price,req.body.website).then(function () {
+  console.log(req.body);
+  models.gymsTable.createNewGym(req.body.name,req.body.city,req.body.street,req.body.houseNumber,req.body.price,req.body.website,req.body.gymLessons, req.body.gymProducts).then(function () {
     res.sendStatus(200);
     //items.saveNewItem(req.body, req.user.email);
     //res.sendStatus(200);
@@ -85,6 +94,20 @@ app.post('/deleteGym/', function(req, res){
   models.gymsTable.deleteGym(req.body.name).then(function () {
     res.sendStatus(200);
    });
+});
+
+app.get('/getProducts/', function(req, res){
+  console.log("get products");
+  models.productsTable.findAllProducts().then(function (data){
+    res.json(data);
+  });
+});
+
+app.get('/getCourse/', function(req, res){
+  console.log("get products");
+  models.lessonsTable.findAllLessons().then(function (data){
+    res.json(data);
+  });
 });
 
 

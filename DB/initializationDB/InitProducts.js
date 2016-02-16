@@ -8,7 +8,7 @@ var initProducts = [
         "comment" : "Amino Product"
     },
     {
-        "name" : "Adidas Swimming Glasses",
+        "name" : "Swimming Glasses",
         "comment" : "Blue swimming glasses of adidas, original, made in USA"
     },
     {

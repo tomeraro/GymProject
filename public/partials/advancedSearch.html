@@ -20,10 +20,10 @@
                 <input ng-model="test" type="text" class="form-control" placeholder="Enter Lesson Name" name='gymLesson1' style="width:380px;">
             </div>
 
-            <div class="form-group advancedSearchInputs">
-                <span style="font-size:16px; font-weight: bold;  margin-right: -18px;">Product</span>                
-                <input ng-model="comment" type="text" class="form-control" placeholder="Enter Product" name='gymProduct' style="width:380px;">
-            </div>
+            <!--<div class="form-group advancedSearchInputs">-->
+                <!--<span style="font-size:16px; font-weight: bold;  margin-right: -18px;">Product</span>                -->
+                <!--<input ng-model="comment" type="text" class="form-control" placeholder="Enter Product" name='gymProduct' style="width:380px;">-->
+            <!--</div>-->
 
             <input type="submit" value="Search" class="btn btn-primary" style="width:480px;margin-top: 35px;height: 30px;margin-left: 7px;" />
 
@@ -32,3 +32,20 @@
     </div>
 
 </div>
+
+
+
+<div class="searchBox" style=" color: white ; font-size: 20px; direction: rtl; ">
+   <center> <button ng-click="rssfeed()" style="color: #0f0f0f;">Click for News by Ynet</button>   </center>
+
+    <li ng-repeat="child in newsFeed">
+        <a href={{child.link}}>
+
+            {{child.title}}
+        </a>
+    </li>
+
+</div>
+
+
+

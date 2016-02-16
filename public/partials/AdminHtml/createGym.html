@@ -36,24 +36,15 @@
                         </div>
 
                         <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gym Products:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>
-                        <label class="checkbox-inline"><input ng-model="Amino" type="checkbox" value="">Amino</label>
-                        <label class="checkbox-inline"><input ng-model="Shaker"     type="checkbox" value="">Shaker</label>
-                        <label class="checkbox-inline"><input ng-model="Protain"    type="checkbox" value="">Protain</label>
-                        <label class="checkbox-inline"><input ng-model="BCCA"       type="checkbox" value="">BCCA</label>
-                        <label class="checkbox-inline"><input ng-model="BodyOil"    type="checkbox" value="">BodyOil</label>
-                        <label class="checkbox-inline"><input ng-model="CardioWatch" type="checkbox" value="">CardioWatch</label>
-                        <label class="checkbox-inline"><input ng-model="HeartMonitor" type="checkbox" value="">HeartMonitor</label>
-
+                        <div ng-repeat="pro in gymsPRO track by $index" style="display:inline-block"></br>
+                            <label class="checkbox-inline"><input ng-model="models[$index]" type="checkbox" value="">{{pro.name}}</label>
+                        </div>
                         </br></br></br></br></br>
-                        <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gym Course :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>
-                        <label class="checkbox-inline"><input ng-model="Yoga" type="checkbox" value="">Yoga</label>
-                        <label class="checkbox-inline"><input ng-model="Trx" type="checkbox" value="">Trx</label>
-                        <label class="checkbox-inline"><input ng-model="Pilatis" type="checkbox" value="">Pilatis</label>
-                        <label class="checkbox-inline"><input ng-model="Kickboxercise" type="checkbox" value="">Kickboxercise</label>
-                        <label class="checkbox-inline"><input ng-model="Dance" type="checkbox" value="">Dance</label>
-                        <label class="checkbox-inline"><input ng-model="StepClasses" type="checkbox" value="">StepClasses</label>
-                        <label class="checkbox-inline"><input ng-model="Cardio" type="checkbox" value="">Cardio</label>
-                        <label class="checkbox-inline"><input ng-model="Zumba" type="checkbox" value="">Zumba</label>
+                        <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gym Course:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>
+                        <div ng-repeat="course in gymsCourse track by $index" style="display:inline-block"></br>
+                            <label class="checkbox-inline"><input ng-model="courseModels[$index]" type="checkbox" value="">{{course.name}}</label>
+                        </div>
+
                         </br></br></br></br></br></br></br></br></br>
                         <center>
                         <button type="submit" class="btn btn-default">Submit</button>
@@ -73,3 +64,26 @@
             </span>
     </div>
 </div>
+
+<!--
+</br></br></br></br></br>
+<b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gym Course :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>
+<label class="checkbox-inline"><input ng-model="Yoga" type="checkbox" value="">Yoga</label>
+<label class="checkbox-inline"><input ng-model="Trx" type="checkbox" value="">Trx</label>
+<label class="checkbox-inline"><input ng-model="Pilatis" type="checkbox" value="">Pilatis</label>
+<label class="checkbox-inline"><input ng-model="Kickboxercise" type="checkbox" value="">Kickboxercise</label>
+<label class="checkbox-inline"><input ng-model="Dance" type="checkbox" value="">Dance</label>
+<label class="checkbox-inline"><input ng-model="StepClasses" type="checkbox" value="">StepClasses</label>
+<label class="checkbox-inline"><input ng-model="Cardio" type="checkbox" value="">Cardio</label>
+<label class="checkbox-inline"><input ng-model="Zumba" type="checkbox" value="">Zumba</label>
+-->
+
+
+<!--<label class="checkbox-inline"><input ng-model="Amino" type="checkbox" value="">Amino</label>
+<label class="checkbox-inline"><input ng-model="Shaker"     type="checkbox" value="">Shaker</label>
+<label class="checkbox-inline"><input ng-model="Protain"    type="checkbox" value="">Protain</label>
+<label class="checkbox-inline"><input ng-model="BCCA"       type="checkbox" value="">BCCA</label>
+<label class="checkbox-inline"><input ng-model="BodyOil"    type="checkbox" value="">BodyOil</label>
+<label class="checkbox-inline"><input ng-model="CardioWatch" type="checkbox" value="">CardioWatch</label>
+<label class="checkbox-inline"><input ng-model="HeartMonitor" type="checkbox" value="">HeartMonitor</label>
+-->
