@@ -11,6 +11,7 @@ var app = angular.module('myApp', [
     'views.home',
     'views.news',
     'views.adminmenu',
+    'views.chat',
     'services.getGyms',
     'services.admin',
     'services.news',
@@ -59,6 +60,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             url: '/adminmenu',
             templateUrl: '../partials/AdminHtml/adminmenu.html',
             controller: 'adminMenuCtrl'
+        })
+        .state('chat', {
+            url: '/chat',
+            templateUrl: '../partials/chat.html',
+            controller: 'chatCtrl'
         })
         .state('news', {
             url: '/news',
