@@ -8,7 +8,7 @@ var initProducts = [
         "comment" : "Amino Product"
     },
     {
-        "name" : "Swimming Glasses",
+        "name" : "SwimmingGlasses",
         "comment" : "Blue swimming glasses of adidas, original, made in USA"
     },
     {
@@ -20,15 +20,15 @@ var initProducts = [
         "comment" : "BCCA product"
     },
     {
-        "name" : "Body Oil",
+        "name" : "BodyOil",
         "comment" : "Body Oil products"
     },
     {
-        "name" : "Cardio Watch",
+        "name" : "CardioWatch",
         "comment" : "Cardio watch for begginers"
     },
     {
-        "name" : "Heart Monitor",
+        "name" : "HeartMonitor",
         "comment" : "Cheap and recommended"
     }
 ]

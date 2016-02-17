@@ -109,7 +109,7 @@ app.get('/adminMenuCourse/', function(req, res){
 app.post('/addGym/', function(req, res){
   console.log("add gym !");
   console.log(req.body);
-  models.gymsTable.createNewGym(req.body.name,req.body.city,req.body.street,req.body.houseNumber,req.body.price,req.body.website,req.body.gymLessons, req.body.gymProducts).then(function () {
+  models.gymsTable.createNewGym(req.body.name,req.body.city,req.body.street,req.body.houseNumber,req.body.coordinates, req.body.price,req.body.website,req.body.gymLessons, req.body.gymProducts).then(function () {
     res.sendStatus(200);
     //items.saveNewItem(req.body, req.user.email);
     //res.sendStatus(200);
@@ -137,6 +137,35 @@ app.get('/getCourse/', function(req, res){
   models.lessonsTable.findAllLessons().then(function (data){
     res.json(data);
   });
+});
+
+/*
+app.get('/getAllProAndCourse/', function(req, res){
+  console.log("editReturnGymProductsAndLessons you are here");
+  models.gymsTable.editReturnGymProductsAndLessons().then(function (data){
+    res.json(data);
+  });
+});
+*/
+app.get('/getAllProAndCourse/:GymName', function(req, res) {
+  var gym = req.params['GymName'];
+  console.log("editReturnGymProductsAndLessons you are here");
+  models.gymsTable.editReturnGymProductsAndLessons(gym).then(function (data){
+    res.json(data);
+  });
+});
+
+app.post('/reSaveGym/', function(req,res){
+  console.log("reSaveGym *** reSaveGym **** reSaveGym *** reSaveGym");
+  console.log(req.body);
+    //(name, city, street, houseNumber, price, website, lessons, products, callback)
+  models.gymsTable.editGym(req.body.gymid,req.body.name,req.body.city,req.body.street,req.body.houseNumber,req.body.price,req.body.website,req.body.gymLessons, req.body.gymProducts).then(function (data){
+    res.sendStatus(200);
+  });
+/*
+  models.gymsTable.editGym(req.body.name,req.body.city,req.body.street,req.body.houseNumber,req.body.price,req.body.website,req.body.gymLessons, req.body.gymProducts).then(function () {
+    res.sendStatus(200);
+  });*/
 });
 
 

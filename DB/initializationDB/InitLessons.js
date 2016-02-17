@@ -16,7 +16,7 @@ var initLessons = [
         "comment": "Pilatis lesson, very good choise"
     },
     {
-        "name": "Kickboxexercise",
+        "name": "KickBoxExercise",
         "comment": "Kickbox lesson"
     },
     {
@@ -24,7 +24,7 @@ var initLessons = [
         "comment": "Dance lesson for all ages"
     },
     {
-        "name": "Step Classes",
+        "name": "StepClasses",
         "comment": "Step Classes practice"
     },
     {

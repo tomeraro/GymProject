@@ -64,13 +64,14 @@ function initDB(){
 
 
 // ----------- Create Functions ----------- //
-models.gymsTable.createNewGym = function(name, city, street, houseNumber, price, website, lessons, products){
+models.gymsTable.createNewGym = function(name, city, street, houseNumber,coordinates, price, website, lessons, products){
 
     var gym = new models.gymsTable({
         name: name,
         city: city,
         street: street,
         houseNumber: houseNumber,
+        coordinates: coordinates,
         price: price,
         website: website,
         gymLessons: [lessons[0],lessons[1],lessons[2], lessons[3], lessons[4], lessons[5], lessons[6], lessons[7]],
@@ -114,9 +115,34 @@ models.gymsTable.deleteGym = function(name){
 
 
 // ------ Edit functions -------//
-function editGym() {
+models.gymsTable.editGym = function (gymid,name, city, street, houseNumber, price, website, lessons, products) {
 
+    console.log("########### Gym city : ##########" + city);
+    models.gymsTable.update({_id: gymid}, {$set: {name:name,city:city,street:street,houseNumber:houseNumber,price:price,website:website,lessons:lessons,products:products} ,$inc: {__v: 1}},  function (err){
+        console.log("errrrrrrr" + err);
+    });
 }
+
+    /*var query = models.gymsTable.find({name:name}, {city:city, street:street, houseNumber:houseNumber, price: price, website:website, lessons:lessons, products:products }, callback).populate('gymLessons', 'name')
+        .populate('gymProducts','name');
+    return query.exec(function(err,gyms){
+        console.log("Im in the edit gym function..... ###########" + gyms);
+        return JSON.stringify(gyms);
+    });*
+
+    /*models.gymsTable.findOne({name: name}, function(err, foundGym) {
+        if(err) {
+            console.log(err);
+        }
+        else {
+            console.log("found the gym ###########" + foundGym);
+
+            var query = models.gymsTable.update({name:name, city:city, street:street, houseNumber:houseNumber, price: price, website:website, lessons:lessons, products:products }).populate('gymLessons', 'name')
+                .populate('gymProducts','name');
+            return query.exec(function(err,gyms){
+                callback(gyms);
+            })*/
+
 
 
 
@@ -124,6 +150,7 @@ models.gymsTable.editReturnGymProductsAndLessons =function(name){
     var query =  models.gymsTable.find({name:name })
         .populate('gymLessons', 'name').populate('gymProducts','name');
     return query.exec(function(err, gyms){
+        console.log("############" + gyms);
         return JSON.stringify(gyms);
     });
 }

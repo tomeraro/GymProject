@@ -9,47 +9,47 @@
 
 
                 <div style="height: 700px;">
-                    <form name='createGym' ng-controller="adminMenuCtrl" ng-submit="" >
+                    <form name='createGym' ng-controller="adminMenuCtrl" ng-submit="SaveEditwGym()" >
                         <div class="form-group">
                             <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gym Name:</b>
-                            <input ng-model="gymname" type="text" class="form-control" id="email">
+                            <input ng-model="NEWgymname" type="text" class="form-control" id="email">
                         </div>
                         <div class="form-group">
                             <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gym City:</b>
-                            <input ng-model="gymcity" type="text" class="form-control" id="pwd">
+                            <input ng-model="NEWgymcity" type="text" class="form-control" id="pwd">
                         </div>
                         <div class="form-group">
                             <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gym Street:</b>
-                            <input ng-model="gymstreet" type="text" class="form-control" id="pwd">
+                            <input ng-model="NEWgymstreet" type="text" class="form-control" id="pwd">
                         </div>
                         <div class="form-group">
                             <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gym House Number:</b>
-                            <input ng-model="gymhouseNum" type="text" class="form-control" id="pwd">
+                            <input ng-model="NEWgymhouseNum" type="text" class="form-control" id="pwd">
                         </div>
                         <div class="form-group">
                             <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gym Price:</b>
-                            <input ng-model="gymprice" type="text" class="form-control" id="pwd">
+                            <input ng-model="NEWgymprice" type="text" class="form-control" id="pwd">
                         </div>
                         <div class="form-group">
                             <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gym WebSite:</b>
-                            <input ng-model="gymwebsite" type="text" class="form-control" id="pwd">
+                            <input ng-model="NEWgymwebsite" type="text" class="form-control" id="pwd">
                         </div>
 
                         <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gym Products:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>
                         <label class="checkbox-inline"><input ng-model="Amino" type="checkbox" value="">Amino</label>
-                        <label class="checkbox-inline"><input ng-model="Shaker"     type="checkbox" value="">Shaker</label>
-                        <label class="checkbox-inline"><input ng-model="Protain"    type="checkbox" value="">Protain</label>
+                        <label class="checkbox-inline"><input ng-model="SwimmingGlasses"   type="checkbox" value="">SwimmingGlasses</label>
+                        <label class="checkbox-inline"><input ng-model="Shaker"    type="checkbox" value="">Shaker</label>
                         <label class="checkbox-inline"><input ng-model="BCCA"       type="checkbox" value="">BCCA</label>
-                        <label class="checkbox-inline"><input ng-model="BodyOil"    type="checkbox" value="">BodyOil</label>
-                        <label class="checkbox-inline"><input ng-model="CardioWatch" type="checkbox" value="">CardioWatch</label>
-                        <label class="checkbox-inline"><input ng-model="HeartMonitor" type="checkbox" value="">HeartMonitor</label>
+                        <label class="checkbox-inline"><input ng-model="BodyOil"    type="checkbox" value="">Body Oil</label>
+                        <label class="checkbox-inline"><input ng-model="CardioWatch" type="checkbox" value="">Cardio Watch</label>
+                        <label class="checkbox-inline"><input ng-model="HeartMonitor" type="checkbox" value="">Heart Monitor</label>
 
                         </br></br></br></br></br>
                         <b style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gym Course :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>
+                        <label class="checkbox-inline"><input ng-model="TRX" type="checkbox" value="">TRX</label>
                         <label class="checkbox-inline"><input ng-model="Yoga" type="checkbox" value="">Yoga</label>
-                        <label class="checkbox-inline"><input ng-model="Trx" type="checkbox" value="">Trx</label>
                         <label class="checkbox-inline"><input ng-model="Pilatis" type="checkbox" value="">Pilatis</label>
-                        <label class="checkbox-inline"><input ng-model="Kickboxercise" type="checkbox" value="">Kickboxercise</label>
+                        <label class="checkbox-inline"><input ng-model="KickBoxExercise" type="checkbox" value="">KickBoxExercise</label>
                         <label class="checkbox-inline"><input ng-model="Dance" type="checkbox" value="">Dance</label>
                         <label class="checkbox-inline"><input ng-model="StepClasses" type="checkbox" value="">StepClasses</label>
                         <label class="checkbox-inline"><input ng-model="Cardio" type="checkbox" value="">Cardio</label>

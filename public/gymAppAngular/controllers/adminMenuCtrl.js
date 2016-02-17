@@ -16,9 +16,6 @@ angular.module('views.adminmenu', [])
         },
         {
             url: './partials/AdminHtml/editGym.html'
-        },
-        {
-            url: './partials/AdminHtml/statistica.html'
         }
         ];
 
@@ -28,7 +25,7 @@ angular.module('views.adminmenu', [])
         $scope.CourseTab= $scope.tabs[2];
         $scope.CreateGymTab= $scope.tabs[3];
         $scope.editGymTab= $scope.tabs[4];
-        $scope.statisticPage= $scope.tabs[5];
+
 
 
 
@@ -110,7 +107,14 @@ angular.module('views.adminmenu', [])
         }
 
         $scope.CreateGym = function(){
+            $scope.gymname = "";
+            $scope.gymcity = "";
+            $scope.gymstreet ="";
+            $scope.gymhouseNum = "";
+            $scope.gymprice = "";
+            $scope.gymwebsite = "";
             $scope.activeTab = $scope.tabs[3];
+
         }
 
         $scope.editGym = function(gym){
@@ -123,12 +127,81 @@ angular.module('views.adminmenu', [])
             $scope.gymwebsite = gym.website;
             //$scope.Amino = true;
 
+
+
+
+            var a = adminGyms.getAllProAndCourse(gym.name).then(function(data) {
+                if (!data){
+                    console.log("data is null");
+                    alert("wrong details. please try again");
+                }
+
+                $scope.ProArray =[];
+                $scope.LessonsArray =[];
+
+                $scope.ProArrayID =[];
+                $scope.LessonsArrayID =[];
+
+                var arrays = JSON.parse(data);
+               // console.log(arrays["0"]);
+                // console.log(arrays["0"]["gymLessons"]);
+               // console.log(arrays["0"]["gymProducts"]);
+
+                var products = arrays["0"]["gymProducts"];
+                var Lessons = arrays["0"]["gymLessons"];
+                for(pro in arrays["0"]["gymProducts"]){
+                    $scope.ProArray.push(products[pro]["name"]);
+                    $scope.ProArrayID.push(products[pro]["_id"]);
+                    $scope[$scope.ProArray[pro]] = true;
+                    //alert( $scope.ProArrayID[pro]);
+                }
+                for(pro in arrays["0"]["gymLessons"]){
+                    $scope.LessonsArray.push(Lessons[pro]["name"]);
+                    $scope.LessonsArrayID.push(Lessons[pro]["_id"]);
+                    $scope[$scope.LessonsArray[pro]] = true;
+                    //alert( $scope.LessonsArray[pro]);
+                }
+                console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+                console.log(gym["_id"]);
+                console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+
+                $scope.NEWgymname           = gym.name;
+                $scope.NEWgymcity           = gym.city;
+                $scope.NEWgymstreet         =gym.street;
+                $scope.NEWgymhouseNum       = gym.houseNumber;
+                $scope.NEWgymprice          = gym.price;
+                $scope.NEWgymwebsite        = gym.website;
+                $scope.gymLessons           =$scope.LessonsArrayID
+                $scope.gymProducts          =$scope.ProArrayID;
+                $scope.gymID = gym["_id"];
+
+
+               // var  array= JSON.parse(data);
+               // var test = JSON.stringify(array);
+               // console.log("working!"+test );
+                // return $scope.gymsObj;
+            });
         }
 
-        $scope.Statistica = function(){
-            $scope.activeTab = $scope.tabs[5];
-        }
+        $scope.SaveEditwGym =  function(){
+            var data = {
+                gymid:$scope.gymID,
+                name: $scope.NEWgymname,
+                city: $scope.NEWgymcity ,
+                street:$scope.NEWgymstreet,
+                houseNumber:$scope.NEWgymhouseNum,
+                price:$scope.NEWgymprice,
+                website:$scope.NEWgymwebsite,
+                gymLessons:$scope.gymLessons,
+                gymProducts:$scope.gymProducts
+            };
 
+            $scope.dataToSend = data;
+            console.log($scope.dataToSend);
+            var data = $scope.dataToSend;
+            $scope.reSave = adminGyms.reSaveGym(data);
+           // location.reload();
+        }
 
         $scope.addGym =  function(){
             console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -137,8 +210,8 @@ angular.module('views.adminmenu', [])
 
             for (var i in $scope.models){
                 if($scope.models[i] == true){
-                console.log($scope.gymsPRO[i]["_id"]);
-                $scope.ProIDarray.push($scope.gymsPRO[i]["_id"]);
+                    console.log($scope.gymsPRO[i]["_id"]);
+                    $scope.ProIDarray.push($scope.gymsPRO[i]["_id"]);
                 }
             }
             for (var i in $scope.courseModels){
@@ -156,44 +229,18 @@ angular.module('views.adminmenu', [])
                 city: $scope.gymcity,
                 street:$scope.gymstreet,
                 houseNumber:$scope.gymhouseNum,
+                coordinates: $scope.gymcoor,
                 price:$scope.gymprice,
                 website:$scope.gymwebsite,
                 gymLessons:$scope.CourseIDarray,
                 gymProducts:$scope.ProIDarray
             };
 
-         $scope.data = adminGyms.CreateNewGym(data);
-
-            /*
-            alert("addGym");
-            alert("things:"+
-            $scope.gymname+
-            $scope.gymcity+
-            $scope.gymstreet+
-            $scope.gymhouseNum+
-            $scope.gymprice+
-            $scope.gymwebsite+
-
-            $scope.Amino+
-            $scope.Shaker+
-            $scope.Protain+
-            $scope.BCCA+
-            $scope.BodyOil+
-            $scope.CardioWatch+
-            $scope.HeartMonitor
-
-            $scope.Yoga+
-            $scope.Trx+
-            $scope.Pilatis+
-            $scope.Kickboxercise+
-            $scope.Dance+
-            $scope.StepClasses+
-            $scope.Cardio+
-            $scope.Zumba
-            );
-        */
-
+            $scope.data = adminGyms.CreateNewGym(data);
+            location.reload();
         }
+
+
         $scope.deleteGym =  function(delGym){
             var data = {name: delGym};
             $scope.data = adminGyms.DeleteGym(data);

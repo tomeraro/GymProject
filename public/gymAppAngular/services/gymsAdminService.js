@@ -58,6 +58,32 @@ angular.module('services.gymAdminService', [])
                 });
             }
 
+           /* var getAllProAndCourse = function (data) {
+                return $http.get('/getAllProAndCourse').then( function(data){
+                    if(data["data"] == null)
+                        return false;
+                    else return JSON.stringify(data["data"]);
+                });
+            }*/
+
+            var getAllProAndCourse = function (gymName) {
+                return $http.get('/getAllProAndCourse/'+gymName+'').then(function(gymName){
+                        return  JSON.stringify(gymName["data"]);
+                });
+            };
+
+            var reSaveGym = function (data) {
+                console.log("SERVICE SERVICE SERVICE SERVICE SERVICE SERVICE ")
+                $http.post('/reSaveGym',data).success(function(){
+                        console.log('ok!');
+                    })
+                    .error(function(err) {
+                        console.log('Error: ' + err);
+                    });
+            }
+
+
+
             return {
                 getAllgyms: getAllgyms,
                 getAllProducts:getAllProducts,
@@ -65,7 +91,9 @@ angular.module('services.gymAdminService', [])
                 CreateNewGym:CreateNewGym,
                 DeleteGym:DeleteGym,
                 getProducts:getProducts,
-                getCourse:getCourse
+                getCourse:getCourse,
+                getAllProAndCourse:getAllProAndCourse,
+                reSaveGym:reSaveGym
             }
         }]);
 /**
