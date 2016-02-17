@@ -173,7 +173,7 @@ app.post('/reSaveGym/', function(req,res){
 });
 
 app.get('/adminMenuGymsByCity/', function(req, res){
-  console.log(" ------------- im in the admin menu route- groupby ------------- ");
+  console.log(" ------------- im in the admin menu route- grosssupby ------------- ");
   models.gymsTable.aggregate({ $group : { _id: '$city' , count: { $sum: 1 }}},function (err, result) {
     if (err)
       next(err);
