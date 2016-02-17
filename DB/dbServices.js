@@ -118,7 +118,8 @@ models.gymsTable.deleteGym = function(name){
 models.gymsTable.editGym = function (gymid,name, city, street, houseNumber, price, website, lessons, products) {
 
     console.log("########### Gym city : ##########" + city);
-    models.gymsTable.update({_id: gymid}, {$set: {name:name,city:city,street:street,houseNumber:houseNumber,price:price,website:website,lessons:lessons,products:products} ,$inc: {__v: 1}},  function (err){
+    console.log(products);
+    models.gymsTable.update({_id: gymid}, {$set: {name:name,city:city,street:street,houseNumber:houseNumber,price:price,website:website,gymLessons:lessons,gymProducts:products} ,$inc: {__v: 1}},  function (err){
         console.log("errrrrrrr" + err);
     });
 }
@@ -202,12 +203,17 @@ models.gymsTable.findAllGymsByLesson = function(lessonName, callback) {
             console.log(err);
         }
         else {
+            if(!lesson)
+            {
+                callback(null);
+
+            }else {
             var query = models.gymsTable.find({ gymLessons: lesson["_id"] }).populate('gymLessons', 'name')
                 .populate('gymProducts','name');
             return query.exec(function(err,gyms){
                     callback(gyms);
                 })
-        }
+        }}
     })
 }
 
@@ -220,12 +226,17 @@ models.gymsTable.findGymByNameCityLesson = function(name, city, lessonName, call
             console.log(err);
         }
         else {
+            if(!lesson)
+            {
+                callback(null);
+
+            }else {
             var query = models.gymsTable.find({ gymLessons: lesson["_id"], name:name, city: city }).populate('gymLessons', 'name')
                 .populate('gymProducts','name');
             return query.exec(function(err,gyms){
                 callback(gyms);
             })
-        }
+        }}
     })
 }
 
@@ -236,11 +247,22 @@ models.gymsTable.findGymByNameLesson = function(name, lessonName, callback) {
             console.log(err);
         }
         else {
+            if(!lesson)
+            {
+                callback(null);
+
+            }else {
+                if(!lesson)
+                {
+                    callback(null);
+
+                }else {
             var query = models.gymsTable.find({ gymLessons: lesson["_id"], name:name }).populate('gymLessons', 'name')
                 .populate('gymProducts','name');
             return query.exec(function(err,gyms){
                 callback(gyms);
             })
+        }}
         }
     })
 }
@@ -252,11 +274,17 @@ models.gymsTable.findGymByCityLesson = function(city, lessonName, callback) {
             console.log(err);
         }
         else {
+            if(!lesson)
+            {
+                callback(null);
+
+            }else {
             var query = models.gymsTable.find({ gymLessons: lesson["_id"], city:city }).populate('gymLessons', 'name')
                 .populate('gymProducts','name');
             return query.exec(function(err,gyms){
                 callback(gyms);
             })
+        }
         }
     })
 }
@@ -324,6 +352,28 @@ models.productsTable.findAllProducts = function() {
         return JSON.stringify(products);
     });
 }
+
+
+models.gymsTable.findAllGymsByCityGroupBy = function() {
+    console.log("------------ Im in the DB --------------- ");
+
+
+    var query  = models.gymsTable.aggregate([{ $group : { _id: '$city' , count: { $sum: 1 }}}],function (err, result) {
+        if (err)
+            next(err);
+        else {
+            console.log(result);
+            return JSON.stringify(result);
+        }
+    });
+
+    /*
+     return query.exec(function (err, gyms) {
+     console.log("The Result is :::::::  " + gyms);
+     return JSON.stringify(gyms);
+     });*/
+}
+
 
 
 //var gym = createNewGym('holmes place raanana','Hayezira st 10',60,'http://www.holmes-place.co.il');

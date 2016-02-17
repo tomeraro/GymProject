@@ -51,6 +51,7 @@ app.get('/SearchGymByNameCityLesson/:name/:city/:lesson', function(req, res) {
   var city= req.params['city'];
   var lesson= req.params['lesson'];
   models.gymsTable.findGymByNameCityLesson(name, city, lesson, function (gyms) {
+    console.log(gyms);
     res.json(gyms);
   });
 });
@@ -68,7 +69,10 @@ app.get('/SearchGymByNameLesson/:name/:lesson', function(req, res) {
 app.get('/SearchGymByCityLesson/:city/:lesson', function(req, res) {
   var city= req.params['city'];
   var lesson= req.params['lesson'];
+
   models.gymsTable.findGymByCityLesson(city, lesson, function (gyms) {
+    console.log("#########################" + gyms);
+
     res.json(gyms);
   });
 });
@@ -168,6 +172,16 @@ app.post('/reSaveGym/', function(req,res){
   });*/
 });
 
+app.get('/adminMenuGymsByCity/', function(req, res){
+  console.log(" ------------- im in the admin menu route- groupby ------------- ");
+  models.gymsTable.aggregate({ $group : { _id: '$city' , count: { $sum: 1 }}},function (err, result) {
+    if (err)
+      next(err);
+    else {
+      res.json(result);
+    }
+  });
+});
 
 
 

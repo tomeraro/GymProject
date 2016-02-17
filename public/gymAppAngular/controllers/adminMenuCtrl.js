@@ -16,6 +16,9 @@ angular.module('views.adminmenu', [])
         },
         {
             url: './partials/AdminHtml/editGym.html'
+        },
+        {
+            url: './partials/AdminHtml/gymsByCity.html'
         }
         ];
 
@@ -25,6 +28,7 @@ angular.module('views.adminmenu', [])
         $scope.CourseTab= $scope.tabs[2];
         $scope.CreateGymTab= $scope.tabs[3];
         $scope.editGymTab= $scope.tabs[4];
+        $scope.groupByCityTab= $scope.tabs[5];
 
 
 
@@ -183,7 +187,28 @@ angular.module('views.adminmenu', [])
             });
         }
 
+
         $scope.SaveEditwGym =  function(){
+            $scope.LessonsToSend = [];
+            $scope.ProductsToSend = [];
+             var proARRAY =["Amino","SwimmingGlasses","Shaker","BCCA","BodyOil","CardioWatch","HeartMonitor"];
+             var CoursARRAY =["TRX","Yoga","Pilatis","KickBoxExercise","Dance","StepClasses","Cardio","Zumba"];
+            for(var i=0;i<7;i++) {
+                if ($scope[proARRAY[i]] == true) {
+                    console.log($scope.gymsPRO[i]["_id"]);
+                    $scope.ProductsToSend.push($scope.gymsPRO[i]["_id"]);
+                }
+            }
+            for(var i=0;i<8;i++) {
+                if ($scope[CoursARRAY[i]] == true) {
+                    console.log($scope.gymsCourse[i]["_id"]);
+                    $scope.LessonsToSend.push($scope.gymsCourse[i]["_id"]);
+                }
+            }
+            console.log($scope.ProductsToSend);
+            console.log($scope.LessonsToSend);
+
+
             var data = {
                 gymid:$scope.gymID,
                 name: $scope.NEWgymname,
@@ -192,15 +217,15 @@ angular.module('views.adminmenu', [])
                 houseNumber:$scope.NEWgymhouseNum,
                 price:$scope.NEWgymprice,
                 website:$scope.NEWgymwebsite,
-                gymLessons:$scope.gymLessons,
-                gymProducts:$scope.gymProducts
+                gymLessons:$scope.LessonsToSend,
+                gymProducts:$scope.ProductsToSend
             };
 
             $scope.dataToSend = data;
             console.log($scope.dataToSend);
             var data = $scope.dataToSend;
             $scope.reSave = adminGyms.reSaveGym(data);
-           // location.reload();
+            location.reload();
         }
 
         $scope.addGym =  function(){
@@ -245,6 +270,19 @@ angular.module('views.adminmenu', [])
             var data = {name: delGym};
             $scope.data = adminGyms.DeleteGym(data);
             location.reload();
+        }
+
+        $scope.groupByCity = function(){
+            $scope.activeTab = $scope.tabs[5];
+            $scope.data = adminGyms.getGymsGroupByCity().then(function(data){
+                if(!data){
+                    console.log("data is null");
+                    alert("wrong details. please try again");
+                }
+                var gyms = JSON.parse(data);
+                console.log("In the Controller ::::" + gyms);
+                $scope.gymsGroupByCity = gyms;
+            });
         }
 
 

@@ -82,6 +82,17 @@ angular.module('services.gymAdminService', [])
                     });
             }
 
+            var getGymsGroupByCity = function () {
+                return $http.get('/adminMenuGymsByCity').then( function(data){
+                    if(data["data"] == null)
+                        return false;
+                    else {
+                        console.log("############### "+ data["data"]);
+                        return JSON.stringify(data["data"]);
+                    }
+                });
+            };
+
 
 
             return {
@@ -93,7 +104,8 @@ angular.module('services.gymAdminService', [])
                 getProducts:getProducts,
                 getCourse:getCourse,
                 getAllProAndCourse:getAllProAndCourse,
-                reSaveGym:reSaveGym
+                reSaveGym:reSaveGym,
+                getGymsGroupByCity:getGymsGroupByCity
             }
         }]);
 /**
