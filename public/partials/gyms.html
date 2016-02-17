@@ -6,12 +6,13 @@
     </div>
     <div ng-repeat="gym in gyms track by $index">
         <div id="gymContainer">
-       <!--     <div id="googleMap"> <ng-map zoom="11" center={{gym.location}}>
+
+            <div id="googleMap"> <ng-map zoom="11" center={{gym.location}}>
                 <marker position={{gym.location}} />
                 <shape name="circle" radius="400" center={{gym.location}} radius="4000" />
                 <control name="overviewMap" opened="true" />
             </ng-map>`
-            </div> -->
+            </div>
 
             <div class="form-group gymDes">Gym Name   
                 <input ng-model="gym.name" type="text" class="form-control" readonly>
